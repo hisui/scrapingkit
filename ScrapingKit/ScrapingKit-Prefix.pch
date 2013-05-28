@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ScrapingKit' target in the 'ScrapingKit' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
