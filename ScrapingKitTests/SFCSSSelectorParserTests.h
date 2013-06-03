@@ -2,6 +2,6 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-@interface ScrapingKitTests : SenTestCase
+@interface SFCSSSelectorParserTests : SenTestCase
 
 @end

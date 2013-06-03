@@ -8,14 +8,44 @@
 
 /* Begin PBXBuildFile section */
 		245B0B321754975F00B946AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B311754975F00B946AD /* Foundation.framework */; };
-		245B0B371754975F00B946AD /* ScrapingKit.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 245B0B361754975F00B946AD /* ScrapingKit.h */; };
-		245B0B391754975F00B946AD /* ScrapingKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B381754975F00B946AD /* ScrapingKit.m */; };
 		245B0B411754975F00B946AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B401754975F00B946AD /* SenTestingKit.framework */; };
 		245B0B431754975F00B946AD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B421754975F00B946AD /* UIKit.framework */; };
 		245B0B441754975F00B946AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B311754975F00B946AD /* Foundation.framework */; };
 		245B0B471754975F00B946AD /* libScrapingKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B2E1754975F00B946AD /* libScrapingKit.a */; };
 		245B0B4D1754975F00B946AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 245B0B4B1754975F00B946AD /* InfoPlist.strings */; };
-		245B0B501754975F00B946AD /* ScrapingKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B4F1754975F00B946AD /* ScrapingKitTests.m */; };
+		245B0B501754975F00B946AD /* ScrapingKitTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B4F1754975F00B946AD /* ScrapingKitTests.mm */; };
+		245B0B711754CFC400B946AD /* SFCSSFilter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B5D1754CFC400B946AD /* SFCSSFilter.mm */; };
+		245B0B721754CFC400B946AD /* SFCSSFilter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B5D1754CFC400B946AD /* SFCSSFilter.mm */; };
+		245B0B731754CFC400B946AD /* SFCSSQuery.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B5F1754CFC400B946AD /* SFCSSQuery.mm */; };
+		245B0B741754CFC400B946AD /* SFCSSQuery.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B5F1754CFC400B946AD /* SFCSSQuery.mm */; };
+		245B0B751754CFC400B946AD /* SFCSSSelectorParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B621754CFC400B946AD /* SFCSSSelectorParser.mm */; };
+		245B0B761754CFC400B946AD /* SFCSSSelectorParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B621754CFC400B946AD /* SFCSSSelectorParser.mm */; };
+		245B0B771754CFC400B946AD /* SFDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B641754CFC400B946AD /* SFDocument.mm */; };
+		245B0B781754CFC400B946AD /* SFDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B641754CFC400B946AD /* SFDocument.mm */; };
+		245B0B791754CFC400B946AD /* SFElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B671754CFC400B946AD /* SFElement.m */; };
+		245B0B7A1754CFC400B946AD /* SFElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B671754CFC400B946AD /* SFElement.m */; };
+		245B0B7B1754CFC400B946AD /* SFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B691754CFC400B946AD /* SFNode.m */; };
+		245B0B7C1754CFC400B946AD /* SFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B691754CFC400B946AD /* SFNode.m */; };
+		245B0B7D1754CFC400B946AD /* SFRegExpScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6C1754CFC400B946AD /* SFRegExpScanner.m */; };
+		245B0B7E1754CFC400B946AD /* SFRegExpScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6C1754CFC400B946AD /* SFRegExpScanner.m */; };
+		245B0B7F1754CFC400B946AD /* SFText.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6E1754CFC400B946AD /* SFText.m */; };
+		245B0B801754CFC400B946AD /* SFText.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6E1754CFC400B946AD /* SFText.m */; };
+		245B0BD71754D42F00B946AD /* SFWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0BD61754D42F00B946AD /* SFWebClient.m */; };
+		245B0BD81754D42F00B946AD /* SFWebClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0BD61754D42F00B946AD /* SFWebClient.m */; };
+		245B0BDE1754D43E00B946AD /* SFError.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0BDA1754D43D00B946AD /* SFError.m */; };
+		245B0BDF1754D43E00B946AD /* SFError.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0BDA1754D43D00B946AD /* SFError.m */; };
+		245B0BE01754D43E00B946AD /* SFFuture.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0BDC1754D43D00B946AD /* SFFuture.m */; };
+		245B0BE11754D43E00B946AD /* SFFuture.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0BDC1754D43D00B946AD /* SFFuture.m */; };
+		245B0C03175A2A8500B946AD /* SFNodeList.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C02175A2A8400B946AD /* SFNodeList.mm */; };
+		245B0C04175A2A8500B946AD /* SFNodeList.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C02175A2A8400B946AD /* SFNodeList.mm */; };
+		245B0C07175A578A00B946AD /* SFCSSSelectorParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C06175A578A00B946AD /* SFCSSSelectorParserTests.m */; };
+		245B0C0E175AD24700B946AD /* SFCSSQueryTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C0D175AD24700B946AD /* SFCSSQueryTests.mm */; };
+		245B0C13175AF19300B946AD /* SFHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C12175AF19200B946AD /* SFHTMLParser.m */; };
+		245B0C14175AF19300B946AD /* SFHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C12175AF19200B946AD /* SFHTMLParser.m */; };
+		245B0C1A175AFC5700B946AD /* SFNodeSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C19175AFC5700B946AD /* SFNodeSelection.m */; };
+		245B0C1B175AFC5700B946AD /* SFNodeSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C19175AFC5700B946AD /* SFNodeSelection.m */; };
+		24EF1F5C175B431000EA64B1 /* SFNodeList+Dot.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */; };
+		24EF1F5D175B431000EA64B1 /* SFNodeList+Dot.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +65,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				245B0B371754975F00B946AD /* ScrapingKit.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,15 +74,59 @@
 		245B0B2E1754975F00B946AD /* libScrapingKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScrapingKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		245B0B311754975F00B946AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		245B0B351754975F00B946AD /* ScrapingKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrapingKit-Prefix.pch"; sourceTree = "<group>"; };
-		245B0B361754975F00B946AD /* ScrapingKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrapingKit.h; sourceTree = "<group>"; };
-		245B0B381754975F00B946AD /* ScrapingKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrapingKit.m; sourceTree = "<group>"; };
 		245B0B3F1754975F00B946AD /* ScrapingKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapingKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		245B0B401754975F00B946AD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		245B0B421754975F00B946AD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		245B0B4A1754975F00B946AD /* ScrapingKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScrapingKitTests-Info.plist"; sourceTree = "<group>"; };
 		245B0B4C1754975F00B946AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		245B0B4E1754975F00B946AD /* ScrapingKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrapingKitTests.h; sourceTree = "<group>"; };
-		245B0B4F1754975F00B946AD /* ScrapingKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScrapingKitTests.m; sourceTree = "<group>"; };
+		245B0B4F1754975F00B946AD /* ScrapingKitTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrapingKitTests.mm; sourceTree = "<group>"; };
+		245B0B591754CFC400B946AD /* ScrapingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScrapingKit-Prefix.pch"; sourceTree = "<group>"; };
+		245B0B5C1754CFC400B946AD /* SFCSSFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSFilter.h; sourceTree = "<group>"; };
+		245B0B5D1754CFC400B946AD /* SFCSSFilter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFCSSFilter.mm; sourceTree = "<group>"; };
+		245B0B5E1754CFC400B946AD /* SFCSSQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSQuery.h; sourceTree = "<group>"; };
+		245B0B5F1754CFC400B946AD /* SFCSSQuery.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFCSSQuery.mm; sourceTree = "<group>"; };
+		245B0B601754CFC400B946AD /* SFCSSQuery+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFCSSQuery+Local.h"; sourceTree = "<group>"; };
+		245B0B611754CFC400B946AD /* SFCSSSelectorParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSSelectorParser.h; sourceTree = "<group>"; };
+		245B0B621754CFC400B946AD /* SFCSSSelectorParser.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFCSSSelectorParser.mm; sourceTree = "<group>"; };
+		245B0B631754CFC400B946AD /* SFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDocument.h; sourceTree = "<group>"; };
+		245B0B641754CFC400B946AD /* SFDocument.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFDocument.mm; sourceTree = "<group>"; };
+		245B0B651754CFC400B946AD /* SFDocument+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFDocument+Local.h"; sourceTree = "<group>"; };
+		245B0B661754CFC400B946AD /* SFElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFElement.h; sourceTree = "<group>"; };
+		245B0B671754CFC400B946AD /* SFElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFElement.m; sourceTree = "<group>"; };
+		245B0B681754CFC400B946AD /* SFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNode.h; sourceTree = "<group>"; };
+		245B0B691754CFC400B946AD /* SFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNode.m; sourceTree = "<group>"; };
+		245B0B6A1754CFC400B946AD /* SFNode+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNode+Local.h"; sourceTree = "<group>"; };
+		245B0B6B1754CFC400B946AD /* SFRegExpScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFRegExpScanner.h; sourceTree = "<group>"; };
+		245B0B6C1754CFC400B946AD /* SFRegExpScanner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFRegExpScanner.m; sourceTree = "<group>"; };
+		245B0B6D1754CFC400B946AD /* SFText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFText.h; sourceTree = "<group>"; };
+		245B0B6E1754CFC400B946AD /* SFText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFText.m; sourceTree = "<group>"; };
+		245B0B831754D04500B946AD /* htmlparse.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = htmlparse.hpp; sourceTree = "<group>"; };
+		245B0B851754D04500B946AD /* unicode.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unicode.hpp; sourceTree = "<group>"; };
+		245B0BD51754D42F00B946AD /* SFWebClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFWebClient.h; sourceTree = "<group>"; };
+		245B0BD61754D42F00B946AD /* SFWebClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFWebClient.m; sourceTree = "<group>"; };
+		245B0BD91754D43D00B946AD /* SFError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFError.h; sourceTree = "<group>"; };
+		245B0BDA1754D43D00B946AD /* SFError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFError.m; sourceTree = "<group>"; };
+		245B0BDB1754D43D00B946AD /* SFFuture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFFuture.h; sourceTree = "<group>"; };
+		245B0BDC1754D43D00B946AD /* SFFuture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFFuture.m; sourceTree = "<group>"; };
+		245B0BDD1754D43D00B946AD /* SFFuture+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFFuture+Local.h"; sourceTree = "<group>"; };
+		245B0C001756306900B946AD /* entities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = entities.hpp; sourceTree = "<group>"; };
+		245B0C01175A2A8300B946AD /* SFNodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNodeList.h; sourceTree = "<group>"; };
+		245B0C02175A2A8400B946AD /* SFNodeList.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFNodeList.mm; sourceTree = "<group>"; };
+		245B0C05175A578A00B946AD /* SFCSSSelectorParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSSelectorParserTests.h; sourceTree = "<group>"; };
+		245B0C06175A578A00B946AD /* SFCSSSelectorParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCSSSelectorParserTests.m; sourceTree = "<group>"; };
+		245B0C08175A612800B946AD /* SFCSSSelectorParser+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFCSSSelectorParser+Test.h"; sourceTree = "<group>"; };
+		245B0C0C175AD24700B946AD /* SFCSSQueryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSQueryTests.h; sourceTree = "<group>"; };
+		245B0C0D175AD24700B946AD /* SFCSSQueryTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFCSSQueryTests.mm; sourceTree = "<group>"; };
+		245B0C11175AF19200B946AD /* SFHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHTMLParser.h; sourceTree = "<group>"; };
+		245B0C12175AF19200B946AD /* SFHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHTMLParser.m; sourceTree = "<group>"; };
+		245B0C18175AFC5700B946AD /* SFNodeSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNodeSelection.h; sourceTree = "<group>"; };
+		245B0C19175AFC5700B946AD /* SFNodeSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNodeSelection.m; sourceTree = "<group>"; };
+		245B0C1C175B2D0200B946AD /* SFNodeSelection+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeSelection+Local.h"; sourceTree = "<group>"; };
+		245B0C20175B3BC800B946AD /* SFNodeList+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Local.h"; sourceTree = "<group>"; };
+		24EF1F5A175B431000EA64B1 /* SFNodeList+Dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Dot.h"; sourceTree = "<group>"; };
+		24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFNodeList+Dot.m"; sourceTree = "<group>"; };
+		24EF1F5E175C25A800EA64B1 /* SFScrapingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFScrapingKit.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +184,15 @@
 		245B0B331754975F00B946AD /* ScrapingKit */ = {
 			isa = PBXGroup;
 			children = (
-				245B0B361754975F00B946AD /* ScrapingKit.h */,
-				245B0B381754975F00B946AD /* ScrapingKit.m */,
+				245B0B591754CFC400B946AD /* ScrapingKit-Prefix.pch */,
+				24EF1F5E175C25A800EA64B1 /* SFScrapingKit.h */,
+				245B0C10175AE4A100B946AD /* Utility */,
+				245B0C15175AF2AC00B946AD /* DOM */,
+				245B0BFB1755017600B946AD /* CSS */,
+				245B0C17175AFBD600B946AD /* Selection */,
+				245B0BD41754D3F600B946AD /* Async */,
+				245B0BD31754D3E600B946AD /* HTTP */,
+				245B0BD21754D3AF00B946AD /* HTML */,
 				245B0B341754975F00B946AD /* Supporting Files */,
 			);
 			path = ScrapingKit;
@@ -129,9 +209,13 @@
 		245B0B481754975F00B946AD /* ScrapingKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				245B0B4E1754975F00B946AD /* ScrapingKitTests.h */,
-				245B0B4F1754975F00B946AD /* ScrapingKitTests.m */,
 				245B0B491754975F00B946AD /* Supporting Files */,
+				245B0B4E1754975F00B946AD /* ScrapingKitTests.h */,
+				245B0B4F1754975F00B946AD /* ScrapingKitTests.mm */,
+				245B0C05175A578A00B946AD /* SFCSSSelectorParserTests.h */,
+				245B0C06175A578A00B946AD /* SFCSSSelectorParserTests.m */,
+				245B0C0C175AD24700B946AD /* SFCSSQueryTests.h */,
+				245B0C0D175AD24700B946AD /* SFCSSQueryTests.mm */,
 			);
 			path = ScrapingKitTests;
 			sourceTree = "<group>";
@@ -143,6 +227,95 @@
 				245B0B4B1754975F00B946AD /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		245B0BD21754D3AF00B946AD /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				245B0B831754D04500B946AD /* htmlparse.hpp */,
+				245B0C001756306900B946AD /* entities.hpp */,
+				245B0C11175AF19200B946AD /* SFHTMLParser.h */,
+				245B0C12175AF19200B946AD /* SFHTMLParser.m */,
+			);
+			name = HTML;
+			sourceTree = "<group>";
+		};
+		245B0BD31754D3E600B946AD /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				245B0BD51754D42F00B946AD /* SFWebClient.h */,
+				245B0BD61754D42F00B946AD /* SFWebClient.m */,
+			);
+			name = HTTP;
+			sourceTree = "<group>";
+		};
+		245B0BD41754D3F600B946AD /* Async */ = {
+			isa = PBXGroup;
+			children = (
+				245B0BD91754D43D00B946AD /* SFError.h */,
+				245B0BDA1754D43D00B946AD /* SFError.m */,
+				245B0BDB1754D43D00B946AD /* SFFuture.h */,
+				245B0BDC1754D43D00B946AD /* SFFuture.m */,
+				245B0BDD1754D43D00B946AD /* SFFuture+Local.h */,
+			);
+			name = Async;
+			sourceTree = "<group>";
+		};
+		245B0BFB1755017600B946AD /* CSS */ = {
+			isa = PBXGroup;
+			children = (
+				245B0B5C1754CFC400B946AD /* SFCSSFilter.h */,
+				245B0B5D1754CFC400B946AD /* SFCSSFilter.mm */,
+				245B0B5E1754CFC400B946AD /* SFCSSQuery.h */,
+				245B0B5F1754CFC400B946AD /* SFCSSQuery.mm */,
+				245B0B601754CFC400B946AD /* SFCSSQuery+Local.h */,
+				245B0B611754CFC400B946AD /* SFCSSSelectorParser.h */,
+				245B0B621754CFC400B946AD /* SFCSSSelectorParser.mm */,
+				245B0C08175A612800B946AD /* SFCSSSelectorParser+Test.h */,
+			);
+			name = CSS;
+			sourceTree = "<group>";
+		};
+		245B0C10175AE4A100B946AD /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				245B0B6B1754CFC400B946AD /* SFRegExpScanner.h */,
+				245B0B6C1754CFC400B946AD /* SFRegExpScanner.m */,
+				245B0B851754D04500B946AD /* unicode.hpp */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		245B0C15175AF2AC00B946AD /* DOM */ = {
+			isa = PBXGroup;
+			children = (
+				245B0B631754CFC400B946AD /* SFDocument.h */,
+				245B0B641754CFC400B946AD /* SFDocument.mm */,
+				245B0B651754CFC400B946AD /* SFDocument+Local.h */,
+				245B0B661754CFC400B946AD /* SFElement.h */,
+				245B0B671754CFC400B946AD /* SFElement.m */,
+				245B0B681754CFC400B946AD /* SFNode.h */,
+				245B0B691754CFC400B946AD /* SFNode.m */,
+				245B0B6A1754CFC400B946AD /* SFNode+Local.h */,
+				245B0B6D1754CFC400B946AD /* SFText.h */,
+				245B0B6E1754CFC400B946AD /* SFText.m */,
+			);
+			name = DOM;
+			sourceTree = "<group>";
+		};
+		245B0C17175AFBD600B946AD /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				245B0C01175A2A8300B946AD /* SFNodeList.h */,
+				245B0C02175A2A8400B946AD /* SFNodeList.mm */,
+				245B0C20175B3BC800B946AD /* SFNodeList+Local.h */,
+				24EF1F5A175B431000EA64B1 /* SFNodeList+Dot.h */,
+				24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */,
+				245B0C18175AFC5700B946AD /* SFNodeSelection.h */,
+				245B0C19175AFC5700B946AD /* SFNodeSelection.m */,
+				245B0C1C175B2D0200B946AD /* SFNodeSelection+Local.h */,
+			);
+			name = Selection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +416,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				245B0B391754975F00B946AD /* ScrapingKit.m in Sources */,
+				245B0B711754CFC400B946AD /* SFCSSFilter.mm in Sources */,
+				245B0B731754CFC400B946AD /* SFCSSQuery.mm in Sources */,
+				245B0B751754CFC400B946AD /* SFCSSSelectorParser.mm in Sources */,
+				245B0B771754CFC400B946AD /* SFDocument.mm in Sources */,
+				245B0B791754CFC400B946AD /* SFElement.m in Sources */,
+				245B0B7B1754CFC400B946AD /* SFNode.m in Sources */,
+				245B0B7D1754CFC400B946AD /* SFRegExpScanner.m in Sources */,
+				245B0B7F1754CFC400B946AD /* SFText.m in Sources */,
+				245B0BD71754D42F00B946AD /* SFWebClient.m in Sources */,
+				245B0BDE1754D43E00B946AD /* SFError.m in Sources */,
+				245B0BE01754D43E00B946AD /* SFFuture.m in Sources */,
+				245B0C03175A2A8500B946AD /* SFNodeList.mm in Sources */,
+				245B0C13175AF19300B946AD /* SFHTMLParser.m in Sources */,
+				245B0C1A175AFC5700B946AD /* SFNodeSelection.m in Sources */,
+				24EF1F5C175B431000EA64B1 /* SFNodeList+Dot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,7 +438,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				245B0B501754975F00B946AD /* ScrapingKitTests.m in Sources */,
+				245B0B501754975F00B946AD /* ScrapingKitTests.mm in Sources */,
+				245B0B721754CFC400B946AD /* SFCSSFilter.mm in Sources */,
+				245B0B741754CFC400B946AD /* SFCSSQuery.mm in Sources */,
+				245B0B761754CFC400B946AD /* SFCSSSelectorParser.mm in Sources */,
+				245B0B781754CFC400B946AD /* SFDocument.mm in Sources */,
+				245B0B7A1754CFC400B946AD /* SFElement.m in Sources */,
+				245B0B7C1754CFC400B946AD /* SFNode.m in Sources */,
+				245B0B7E1754CFC400B946AD /* SFRegExpScanner.m in Sources */,
+				245B0B801754CFC400B946AD /* SFText.m in Sources */,
+				245B0BD81754D42F00B946AD /* SFWebClient.m in Sources */,
+				245B0BDF1754D43E00B946AD /* SFError.m in Sources */,
+				245B0BE11754D43E00B946AD /* SFFuture.m in Sources */,
+				245B0C04175A2A8500B946AD /* SFNodeList.mm in Sources */,
+				245B0C07175A578A00B946AD /* SFCSSSelectorParserTests.m in Sources */,
+				245B0C0E175AD24700B946AD /* SFCSSQueryTests.mm in Sources */,
+				245B0C14175AF19300B946AD /* SFHTMLParser.m in Sources */,
+				245B0C1B175AFC5700B946AD /* SFNodeSelection.m in Sources */,
+				24EF1F5D175B431000EA64B1 /* SFNodeList+Dot.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,24 +537,33 @@
 		245B0B541754975F00B946AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/ScrapingKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScrapingKit/ScrapingKit-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				VALID_ARCHS = "armv7 armv7s iphonesimulator";
 			};
 			name = Debug;
 		};
 		245B0B551754975F00B946AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"ARCHS[sdk=*]" = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LIBRARY = "libc++";
 				DSTROOT = /tmp/ScrapingKit.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScrapingKit/ScrapingKit-Prefix.pch";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				"VALID_ARCHS[sdk=*]" = "armv7 armv7s iphonesimulator";
 			};
 			name = Release;
 		};
@@ -403,6 +616,7 @@
 				245B0B551754975F00B946AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		245B0B561754975F00B946AD /* Build configuration list for PBXNativeTarget "ScrapingKitTests" */ = {
 			isa = XCConfigurationList;
@@ -411,6 +625,7 @@
 				245B0B581754975F00B946AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
