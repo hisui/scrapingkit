@@ -1,0 +1,14 @@
+# see: http://stackoverflow.com/questions/49478/git-ignore-file-for-xcode-projects
+.DS_Store
+.Trashes
+*.swp
+*~.nib
+DerivedData/
+build/
+xcuserdata
+xcuserdata/**/*
+*.pbxuser
+*.perspective
+*.perspectivev3
+*.mode1v3
+*.mode2v3
