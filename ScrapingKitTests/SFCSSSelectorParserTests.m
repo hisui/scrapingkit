@@ -15,6 +15,9 @@
     STAssertEqualObjects
     (@"<[*]>", [self dumpFileters:[[self newParser:@"*"] parseSelector]], nil);
 
+    // empty string
+    STAssertEqualObjects
+    (@"<>", [self dumpFileters:[[self newParser:@""] parseSelector]], nil);
 
 }
 
@@ -25,8 +28,14 @@
     (@"<[a][[class~='x']]>", [self dumpFileters:[[self newParser:@"a.x"] parseSelector]], nil);
     
     STAssertEqualObjects
+    (@"<[[class~='x']]>", [self dumpFileters:[[self newParser:@".x"] parseSelector]], nil);
+    
+    STAssertEqualObjects
     (@"<[a][[id='x']]>", [self dumpFileters:[[self newParser:@"a#x"] parseSelector]], nil);
-
+    
+    STAssertEqualObjects
+    (@"<[[id='x']]>", [self dumpFileters:[[self newParser:@"#x"] parseSelector]], nil);
+    
 }
 
 - (void)testParseAttributeFilter
@@ -34,6 +43,9 @@
     
     STAssertEqualObjects
     (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x=y]"] parseSelector]], nil);
+    
+    STAssertEqualObjects
+    (@"<[[x='y']]>", [self dumpFileters:[[self newParser:@"[x=y]"] parseSelector]], nil);
     
     STAssertEqualObjects
     (@"<[a][[x^='y']]>", [self dumpFileters:[[self newParser:@"a[x^=y]"] parseSelector]], nil);
@@ -95,6 +107,8 @@
     STAssertEqualObjects
     (@"<[:not(*:empty)]>", [self dumpFileters:[[self newParser:@":not(*:empty)"] parseFilter]], nil);
     
+    STAssertEqualObjects
+    (@"<[:not(:empty)]>", [self dumpFileters:[[self newParser:@":not(:empty)"] parseFilter]], nil);
 }
 
 - (void)testParseAllFilters
