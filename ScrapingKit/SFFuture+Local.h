@@ -20,6 +20,9 @@
 @interface SFFutureDisj : SFFutureNext @end
 
 @interface SFFutureMap : SFFuture
+- (id)initWithBase:(SFFuture*)base
+		  withFunc:(id(^)(id))func
+		  withFail:(BOOL)fail;
 @end
 
 

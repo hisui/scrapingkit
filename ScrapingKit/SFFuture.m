@@ -7,7 +7,7 @@
 	NSString *_name;
 }
 
-+ (SFFuture*)done:(id)result
++ (SFFuture*)exit:(id)result
 {
 	return [[SFFutureDone alloc] initWithResult:result
                                       withError:nil];
@@ -41,6 +41,16 @@
 - (void)cancel
 {
 	[self doesNotRecognizeSelector:_cmd];
+}
+
+- (SFFuture*)map:(id (^)(id))func
+{
+    return [[SFFutureMap alloc] initWithBase:self withFunc:func withFail:NO];
+}
+
+- (SFFuture*)aid:(id(^)(id))func
+{
+    return [[SFFutureMap alloc] initWithBase:self withFunc:func withFail:YES];
 }
 
 - (SFFuture*)conj:(SFFuture*(^)(id))next

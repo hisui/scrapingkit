@@ -4,11 +4,11 @@
 
 @implementation SFWebClientResponse
 {
-    int     _code;
-	NSData *_body;
+    NSInteger _code;
+	NSData   *_body;
 }
 
-- (id)initWithCode:(int)code
+- (id)initWithCode:(NSInteger)code
 		  withBody:(NSData*)body
 {
 	if ((self = [self init])) {
@@ -75,7 +75,7 @@ didReceiveResponse:(NSURLResponse*)response
 {
 	[self notifyExit:
 	 [[SFWebClientResponse alloc] initWithCode:_res.statusCode
-									   withBody:_buf]];
+                                      withBody:_buf]];
 }
 
 - (BOOL)queryCancel

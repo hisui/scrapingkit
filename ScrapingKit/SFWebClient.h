@@ -10,7 +10,7 @@
 /**
  * HTTPステータスコードです。
  */
-@property(nonatomic,readonly) int code;
+@property(nonatomic,readonly) NSInteger code;
 
 /**
  * レスポンスボディです。

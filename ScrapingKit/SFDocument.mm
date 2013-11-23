@@ -56,7 +56,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
         case sf::ELEM_CLOSE:
             {
                 auto name = stringify(pair).lowercaseString;
-                for (int i = stack.size() - 1; i >= 0; --i) {
+                for (int i = int(stack.size()) - 1; i >= 0; --i) {
                     auto elem = stack[i];
                     if ([elem.name isEqualToString:name]) {
                         for (int j = i + 1; j < stack.size(); ++j) {

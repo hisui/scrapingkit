@@ -14,15 +14,15 @@ typedef SFFuture*(^SFFutureBlock)(id);
 
 + (SFFuture*)fail:(id)result;
 + (SFFuture*)exit:(id)result;
-+ (SFFuture*)timeout:(NSTimeInterval)interval;
+//+ (SFFuture*)timeout:(NSTimeInterval)interval;
 
-+ (SFFuture*)untilExit:(SFFutureBlock*)make limit:(int)n;
-+ (SFFuture*)untilFail:(SFFutureBlock*)make limit:(int)n;
+//+ (SFFuture*)untilExit:(SFFutureBlock*)make limit:(int)n;
+//+ (SFFuture*)untilFail:(SFFutureBlock*)make limit:(int)n;
 
 - (void)wait:(void(^)(id,SFError*))func;
 
-- (SFFuture*)willFail;
-- (SFFuture*)willExit;
+//- (SFFuture*)willFail;
+//- (SFFuture*)willExit;
 
 - (SFFuture*)map:(id(^)(id))func;
 - (SFFuture*)aid:(id(^)(id))func;
@@ -30,10 +30,10 @@ typedef SFFuture*(^SFFutureBlock)(id);
 - (SFFuture*)conj:(SFFutureBlock)next;
 - (SFFuture*)disj:(SFFutureBlock)next;
 
-- (SFFuture*)race:(SFFuture*)that;
+//- (SFFuture*)race:(SFFuture*)that;
 
-- (SFFuture*)cons:(SFFuture*)that by:(id(^)(id,id))func;
-- (SFFuture*)cons:(SFFuture*)that;
+//- (SFFuture*)cons:(SFFuture*)that by:(id(^)(id,id))func;
+//- (SFFuture*)cons:(SFFuture*)that;
 
 @end
 
