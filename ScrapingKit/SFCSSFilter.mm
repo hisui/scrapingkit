@@ -164,8 +164,8 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
         case MATCH_EQUAL_PART:
         {
             NSRange range = [data rangeOfString:_data];
-            int pos = range.location;
-            int end = range.location + range.length;
+            auto pos = range.location;
+            auto end = range.location + range.length;
             return pos != NSNotFound
             && (pos == 0           || [data characterAtIndex:pos-1] == ' ')
             && (end == data.length || [data characterAtIndex:end  ] == ' ');

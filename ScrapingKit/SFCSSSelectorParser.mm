@@ -109,7 +109,7 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
         tail = head;
     }
     for (SFCSSFilter *next;; ) {
-        if (head && (next = [self parseFilter])) {
+        if (/*head &&*/ (next = [self parseFilter])) {
             // no-op
         }
         else if ([self scan:RX_ATTR_SELECTOR]) {
