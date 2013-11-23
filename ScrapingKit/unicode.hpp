@@ -85,11 +85,11 @@ struct utf8_decoder
     inline static int count_bytes(uint8_t c)
     {
         return
-        ((c >> 6) + 1 >> 2) +
-        ((c >> 5) + 1 >> 3) +
-        ((c >> 4) + 1 >> 4) +
-        ((c >> 3) + 1 >> 5) +
-        ((c >> 2) + 1 >> 6) ;
+        (((c >> 6) + 1) >> 2) +
+        (((c >> 5) + 1) >> 3) +
+        (((c >> 4) + 1) >> 4) +
+        (((c >> 3) + 1) >> 5) +
+        (((c >> 2) + 1) >> 6) ;
     }
         
     uint32_t operator*() const
