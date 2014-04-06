@@ -115,7 +115,7 @@ didReceiveResponse:(NSURLResponse*)response
 - (SFFuture*)get:(NSURL*)url
      withHeaders:(NSDictionary*)headers
 {
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL: url];
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
 	[self appendHeaders:_defaultHeaders to:request];
 	[self appendHeaders:headers         to:request];
 	return [[SFWebRequestTask alloc] initWithRequest:request];
