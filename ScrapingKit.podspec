@@ -1,5 +1,3 @@
-# coding: utf-8
-
 Pod::Spec.new do |s|
 
   # ―――  Spec Metadata  ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -8,13 +6,13 @@ Pod::Spec.new do |s|
   s.summary = "ScrapingKit <(^_^;)"
 
   s.description  = <<-DESC
-                   blah blah blah.
+                   blah blah blah blah blah blah blah.
                    DESC
 
   s.homepage = "https://github.com/hisui/scrapingkit"
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.license  = "MIT"
+  s.license  = { :type => "MIT", :file => "LICENSE.txt" }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.author = { "shun" => "findall3@gmail.com" }
