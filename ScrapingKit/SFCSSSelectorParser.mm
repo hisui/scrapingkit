@@ -42,9 +42,9 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
     [g_UserFilters setObject:parsec forKey:name];
 }
 
-- (id)initWithQuery:(NSString*)query
+- (instancetype)initWithQuery:(NSString*)query
 {
-    if((self = [super init])) {
+    if ((self = [super init])) {
         self.source = query;
     }
     return self;
@@ -52,11 +52,11 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
 
 - (SFSelectorChain*)parse
 {
-    SFSelectorChain *head = [[SFSelectorChain alloc] init];
+    auto head = [SFSelectorChain.alloc init];
     [self parseSubject:head];
-    while([self scan:RX_COMBINATOR]) {
+    while ([self scan:RX_COMBINATOR]) {
         auto kind = (Combinator) [[self $:1] characterAtIndex:0];
-        head = [[SFSelectorChain alloc] initWithTail:head];
+        head = [SFSelectorChain.alloc initWithTail:head];
         head->combinator = kind;
         head->idref = kind == COMB_IDREF ? [self $:2]: nil;
         [self parseSubject:head];
@@ -66,23 +66,23 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
 
 + (SFSelectorChain*)parse:(NSString*)query
 {
-    return [[[SFCSSSelectorParser alloc] initWithQuery:query] parse];
+    return [[SFCSSSelectorParser.alloc initWithQuery:query] parse];
 }
 
 - (SFCSSFilter*)parseFilter
 {
-    if(![self scan:RX_SELECTOR_START]) {
+    if (![self scan:RX_SELECTOR_START]) {
         return nil;
     } 
     SFCSSFilter* (^parsec)(SFCSSSelectorParser*) = g_UserFilters[[self $:1]];
-    if(!parsec) {
+    if (!parsec) {
         [self raiseError:[NSString stringWithFormat:@"Unknwon filter name:%@", [self $:1]]];
     }
-    if(![self $:2].length) { // 引数なし
+    if (![self $:2].length) { // 引数なし
         return parsec(nil);
     }
     auto filter = parsec(self);
-    if(self.code != ')') {
+    if (self.code != ')') {
         [self raiseError:[NSString stringWithFormat:@"Expected `)', but `%c' found.", self.code]];
     }
     ++self.cursor;
@@ -105,7 +105,7 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
     SFCSSFilter *head = nil;
     SFCSSFilter *tail = nil;
     if ([self scan:RX_TYPE_SELECTOR]) {
-        head = [[SFTypeSelector alloc] initWithName:[self $:1]];
+        head = [SFTypeSelector.alloc initWithName:[self $:1]];
         tail = head;
     }
     for (SFCSSFilter *next;; ) {
@@ -114,23 +114,23 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
         }
         else if ([self scan:RX_ATTR_SELECTOR]) {
             next = [self $:2].length
-            ? [[SFAttributeFilter alloc] initWithName:[self $:1]
-                                             withData:[self $:5]
-                                             withKind:[self $:3].length
+            ? [SFAttributeFilter.alloc initWithName:[self $:1]
+                                           withData:[self $:5]
+                                           withKind:[self $:3].length
                     ? MatchType([[self $:3] characterAtIndex:0])
                     : MATCH_EQUAL]
-            : [[SFAttributeFilter alloc] initWithName:[self $:1]
-                                             withData:@""
-                                             withKind:MATCH_SUBSTR];
+            : [SFAttributeFilter.alloc initWithName:[self $:1]
+                                           withData:@""
+                                           withKind:MATCH_SUBSTR];
         }
         else if ([self scan:RX_ID_SELECTOR]) {
             next = [[self $:1] isEqualToString:@"."]
-            ? [[SFAttributeFilter alloc] initWithName:@"class"
-                                             withData:[self $:2]
-                                             withKind:MATCH_EQUAL_PART]
-            : [[SFAttributeFilter alloc] initWithName:@"id"
-                                             withData:[self $:2]
-                                             withKind:MATCH_EQUAL];
+            ? [SFAttributeFilter.alloc initWithName:@"class"
+                                           withData:[self $:2]
+                                           withKind:MATCH_EQUAL_PART]
+            : [SFAttributeFilter.alloc initWithName:@"id"
+                                           withData:[self $:2]
+                                           withKind:MATCH_EQUAL];
         }
         else {
             break;

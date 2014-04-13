@@ -32,7 +32,7 @@
     return [_source characterAtIndex:_cursor];
 }
 
-- (id)initWithData:(NSString*)data
+- (instancetype)initWith:(NSString*)data
 {
     if((self = [self init])) {
         self->_source = data;

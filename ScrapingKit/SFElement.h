@@ -56,9 +56,8 @@
 /**
  * Initializes with a tag name and attributes.
  */
-- (id)initWithName:(NSString*)name;
-- (id)initWithName:(NSString*)name
-          withAttr:(NSDictionary*)attributes;
+- (instancetype)initWithName:(NSString*)name;
+- (instancetype)initWithName:(NSString*)name attrs:(NSDictionary*)attributes;
 
 /**
  * Appends a child node.

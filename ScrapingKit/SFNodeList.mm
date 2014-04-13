@@ -144,11 +144,11 @@ static NSArray *vectorize(SFElement *elem)
 
 + (SFNodeList*)nodeListWithElements:(NSArray*)elements
 {
-    return [[SFSynchronizedNodeList alloc] initWithSelection:
-            [[SFArrayNodeSelection alloc] initWithElements:elements]];
+    return [SFSynchronizedNodeList.alloc initWithSelection:
+            [SFArrayNodeSelection.alloc initWithElements:elements]];
 }
 
-- (id)initWithSelection:(SFNodeSelection *)selection
+- (instancetype)initWithSelection:(SFNodeSelection*)selection
 {
     if ((self = [self init])) {
         self->_selection = selection;
@@ -158,7 +158,7 @@ static NSArray *vectorize(SFElement *elem)
 
 - (SFNodeList*)bind:(SFNodeSelection*(^)(SFNodeSelection*))func
 {
-    return [[SFSynchronizedNodeList alloc] initWithSelection:func(_selection)];
+    return [SFSynchronizedNodeList.alloc initWithSelection:func(_selection)];
 }
 
 @end

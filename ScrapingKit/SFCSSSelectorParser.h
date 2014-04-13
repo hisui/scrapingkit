@@ -19,7 +19,7 @@
 /**
  * Initializes with a CSS selector query.
  */
-- (id)initWithQuery:(NSString*)query;
+- (instancetype)initWithQuery:(NSString*)query;
 
 /**
  * Parses the entire query to return a chain of compound selector.

@@ -9,7 +9,7 @@ extern NSString *SFTextDecode(NSString *src);
  * Text node.
  */
 @interface SFText : SFNode
-- (id)initWithText:(NSString*)text;
+- (instancetype)initWithText:(NSString*)text;
 
 @property(nonatomic,readonly) BOOL isBlank;
 @end

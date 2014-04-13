@@ -158,7 +158,7 @@
 
 - (SFCSSSelectorParser*)newParser:(NSString*)q
 {
-    return [[SFCSSSelectorParser alloc] initWithQuery:q];
+    return [SFCSSSelectorParser.alloc initWithQuery:q];
 }
 
 @end

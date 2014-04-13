@@ -7,9 +7,9 @@ NSString *SFTextEncode(NSString *src)
     const char *pos = [src cStringUsingEncoding:NSUTF8StringEncoding];
     const char *tmp = pos;
     NSMutableString *dest = [NSMutableString stringWithCapacity:strlen(pos)];
-    while(*pos) {
+    while (*pos) {
         NSString *esc = nil;
-        switch(*pos) {
+        switch (*pos) {
         case '\'': esc = @"&apos;"; break;
         case  '"': esc = @"&qout;"; break;
         case  '&': esc =  @"&amp;"; break;
@@ -20,19 +20,19 @@ NSString *SFTextEncode(NSString *src)
             continue;
         }
         [dest appendString:
-         [[NSString alloc] initWithBytesNoCopy:(char*)tmp
-                                        length:pos - tmp
-                                      encoding:NSUTF8StringEncoding      
-                                  freeWhenDone:NO]];
+         [NSString.alloc initWithBytesNoCopy:(char*)tmp
+                                      length:pos - tmp
+                                        encoding:NSUTF8StringEncoding
+                                    freeWhenDone:NO]];
         tmp = ++pos;
         [dest appendString:esc];
     }
-    if(pos > tmp) {
+    if (pos > tmp) {
         [dest appendString:
-         [[NSString alloc] initWithBytesNoCopy:(char*)tmp
-                                        length:pos - tmp
-                                      encoding:NSUTF8StringEncoding
-                                  freeWhenDone:NO]];
+         [NSString.alloc initWithBytesNoCopy:(char*)tmp
+                                      length:pos - tmp
+                                    encoding:NSUTF8StringEncoding
+                                freeWhenDone:NO]];
     }
     return dest;
 }
@@ -48,9 +48,9 @@ NSString *SFTextDecode(NSString *src)
 }
 @synthesize text = _text;
 
-- (id)initWithText:(NSString*)text
+- (instancetype)initWithText:(NSString*)text
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_text = text.copy;
     }
     return self;

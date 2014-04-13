@@ -23,9 +23,9 @@ enum Combinator
     enum Combinator combinator;
     NSString *idref; // <(^_^;)
 }
-- (id)initWithTail:(SFSelectorChain*)chain;
+- (instancetype)initWithTail:(SFSelectorChain*)chain;
 @end
 
 @interface SFQueryResult : SFNodeList
-- (id)initWithEnumerator:(id <NSFastEnumeration>)enumerator;
+- (instancetype)initWithEnumerator:(id <NSFastEnumeration>)enumerator;
 @end

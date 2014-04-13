@@ -54,21 +54,21 @@ static BOOL isText(SFNode *node)
 - (void)setText:(NSString*)text
 {
     [self removeAll];
-    [self append:[[SFText alloc] initWithText:text]];
+    [self append:[SFText.alloc initWithText:text]];
 }
 
-- (id)init
+- (instancetype)init
 {
     if((self = [super init])) {
         self->_name = @"(*_*) bug?";
-        self->_first = [[SFNode alloc] init];
+        self->_first = [SFNode.alloc init];
         self->_guard = _first;
         self->_attributes = NSMutableDictionary.dictionary;
     }
     return self;
 }
 
-- (id)initWithName:(NSString *)name
+- (instancetype)initWithName:(NSString *)name
 {
     if((self = [self init])) {
         self->_name = [name copy];
@@ -76,8 +76,7 @@ static BOOL isText(SFNode *node)
     return self;
 }
 
-- (id)initWithName:(NSString*)name
-          withAttr:(NSDictionary*)attributes
+- (instancetype)initWithName:(NSString*)name attrs:(NSDictionary*)attributes
 {
     if((self = [self initWithName:name])) {
         self->_attributes = [attributes mutableCopy];

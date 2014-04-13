@@ -11,7 +11,7 @@
     for (SFElement *e in self.elements) {
         [set addObjectsFromArray:func(e)];
     }
-    return [[SFArrayNodeSelection alloc] initWithElements:set.array];
+    return [SFArrayNodeSelection.alloc initWithElements:set.array];
 }
 
 - (SFNodeSelection*)map:(SFElement*(^)(SFElement*))func
@@ -22,7 +22,7 @@
 - (SFNodeSelection*)append:(NSString*)query
 {
     return
-    [[SFQueryNodeSelection alloc] initWithElements:self.elements
+    [SFQueryNodeSelection.alloc initWithElements:self.elements
                                       withSelector:query];
 }
 
@@ -42,7 +42,7 @@
 
 @synthesize elements = _elements;
 
-- (id)initWithElements:(NSArray*)elements
+- (instancetype)initWithElements:(NSArray*)elements
 {
     if ((self = [self init])) {
         self->_elements = elements;
@@ -59,8 +59,8 @@
     NSString *_query;
 }
 
-- (id)initWithElements:(NSArray*)elements
-          withSelector:(NSString*)query
+- (instancetype)initWithElements:(NSArray*)elements
+                    withSelector:(NSString*)query
 {
     if ((self = [self init])) {
         self->_elements = elements;
@@ -84,8 +84,8 @@
 - (SFNodeSelection*)append:(NSString*)query
 {
     return
-    [[SFQueryNodeSelection alloc] initWithElements:_elements
-                                      withSelector:[_query stringByAppendingString:query]];
+    [SFQueryNodeSelection.alloc initWithElements:_elements
+                                    withSelector:[_query stringByAppendingString:query]];
 }
 
 @end

@@ -32,7 +32,7 @@
 
 // E, *
 @interface SFTypeSelector : SFCSSFilter
-- (id)initWithName:(NSString*)name;
+- (instancetype)initWithName:(NSString*)name;
 @end
 
 enum MatchType
@@ -46,9 +46,9 @@ enum MatchType
 
 // E[name], E[name=data], ...
 @interface SFAttributeFilter : SFCSSFilter
-- (id)initWithName:(NSString*)name
-          withData:(NSString*)data
-          withKind:(enum MatchType)kind;
+- (instancetype)initWithName:(NSString*)name
+                    withData:(NSString*)data
+                    withKind:(enum MatchType)kind;
 @end
 
 enum EquationKind
@@ -62,22 +62,22 @@ enum EquationKind
 
 // E:nth-*(Xn+Y)
 @interface SFNEquation : SFCSSFilter
-- (id)initWithScale:(int)scale withBase:(int)base;
+- (instancetype)initWithScale:(int)scale withBase:(int)base;
 @end
 
 // E:nth-[last-]child, nth-[last-]type-of
 @interface SFNEquationFilter : SFCSSFilter
-- (id)initWithKind:(enum EquationKind)kind withEquation:(SFNEquation*)eq;
+- (instancetype)initWithKind:(enum EquationKind)kind withEquation:(SFNEquation*)eq;
 @end
 
 // E:not(...)
 @interface SFNotFilter : SFCSSFilter
-- (id)initWithFilter:(SFCSSFilter*)filter;
+- (instancetype)initWithFilter:(SFCSSFilter*)filter;
 @end
 
 // E:matches(a, b, c, ..)
 @interface SFMatchesAnyFilter : SFCSSFilter
-- (id)initWithFilters:(NSArray*)filters;
+- (instancetype)initWithFilters:(NSArray*)filters;
 @end
 
 // E:only-child
@@ -106,8 +106,8 @@ enum EquationKind
 
 // E:nth-match(Xn+Y of ...)
 @interface SFNthMatchFilter : SFCSSFilter
-- (id)initWithLast:(BOOL)b
-      withEquation:(SFNEquation*)eq
-      withSelector:(SFCSSFilter*)filter;
+- (instancetype)initWithLast:(BOOL)b
+                    equation:(SFNEquation*)eq
+                    selector:(SFCSSFilter*)filter;
 @end
 

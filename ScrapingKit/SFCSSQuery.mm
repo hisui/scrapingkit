@@ -174,7 +174,7 @@ private:
 }
 
 @implementation SFSelectorChain
-- (id)initWithTail:(SFSelectorChain*)chain
+- (instancetype)initWithTail:(SFSelectorChain*)chain
 {
     if((self = [self init])) {
         self->tail = chain;
@@ -203,7 +203,7 @@ private:
 {
     std::unique_ptr<CssQueryProcessor> _processor;
 }
-- (id)initWithContext:(SFElement*)context
+- (instancetype)initWithContext:(SFElement*)context
              withHead:(SFSelectorChain*)head
              withSubj:(SFSelectorChain*)subj
 {
@@ -239,13 +239,13 @@ private:
 
 + (SFCSSQuery*)query:(NSString*)query
 {
-    return [[SFCSSQuery alloc] initWithQuery:query];
+    return [SFCSSQuery.alloc initWithQuery:query];
 }
 
-- (id)initWithQuery:(NSString*)query
+- (instancetype)initWithQuery:(NSString*)query
 {
-    auto parser = [[SFCSSSelectorParser alloc] initWithQuery:query];
-    if((self = [self init])) {
+    auto parser = [SFCSSSelectorParser.alloc initWithQuery:query];
+    if ((self = [self init])) {
         self->_head = [parser parse];
         self->_subj = parser.subject;
     }
@@ -259,7 +259,7 @@ private:
 
 - (id <NSFastEnumeration>)findAll:(SFElement*)context
 {
-    return [[SFSelectorEnumeration alloc] initWithContext:context
+    return [SFSelectorEnumeration.alloc initWithContext:context
                                                  withHead:_head
                                                  withSubj:_subj];
 }
@@ -270,10 +270,10 @@ private:
     NSArray *_elements;
 }
 
-- (id)initWithEnumerator:(id <NSFastEnumeration>)enumerator
+- (instancetype)initWithEnumerator:(id <NSFastEnumeration>)enumerator
 {
     if ((self = [self init])) {
-        NSMutableArray *a = [NSMutableArray array];
+        auto a = NSMutableArray.array;
         for (SFElement *e in enumerator) {
             [a addObject:e];
         }

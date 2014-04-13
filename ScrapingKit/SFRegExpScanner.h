@@ -30,7 +30,7 @@
 /**
  * Initializes with a subject string.
  */
-- (id)initWithData:(NSString*)data;
+- (instancetype)initWith:(NSString*)data;
 
 /**
  * Matches a regexp to remaining string to advance the cursor.

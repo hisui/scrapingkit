@@ -4,5 +4,5 @@
 #import "SFNodeSelection+Local.h"
 
 @interface SFSynchronizedNodeList : SFNodeList
-- (id)initWithSelection:(SFNodeSelection*)selection;
+- (instancetype)initWithSelection:(SFNodeSelection*)selection;
 @end

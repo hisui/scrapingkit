@@ -3,10 +3,10 @@
 #import "SFNodeSelection.h"
 
 @interface SFArrayNodeSelection : SFNodeSelection
-- (id)initWithElements:(NSArray*)elements;
+- (instancetype)initWithElements:(NSArray*)elements;
 @end
 
 @interface SFQueryNodeSelection : SFNodeSelection
-- (id)initWithElements:(NSArray*)elements
-          withSelector:(NSString*)query;
+- (instancetype)initWithElements:(NSArray*)elements
+                    withSelector:(NSString*)query;
 @end

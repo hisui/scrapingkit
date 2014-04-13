@@ -2,7 +2,6 @@
 
 #import "SFDocument+Local.h"
 #import "SFElement.h"
-
 #include <deque>
 #include "htmlparse.hpp"
 
@@ -10,17 +9,16 @@ typedef sf::basic_htmlparser<const char*> HTMLParser;
 
 static NSString *stringify(const HTMLParser::pair_t &pair)
 {
-    // FIXME ここ、何故かnilになることがある・・・
     auto tmp =
-    [[NSString alloc] initWithBytes:pair.first
-                             length:pair.second - pair.first
-                           encoding:NSUTF8StringEncoding];
+    [NSString.alloc initWithBytes:pair.first
+                           length:pair.second - pair.first
+                         encoding:NSUTF8StringEncoding];
     return tmp ? tmp: @"";
 }
 
 static void parseHTML(SFElement *root, const char *pos, const char *end)
 {
-    std::deque<SFElement* __strong> stack;
+    std::deque<SFElement*> stack;
     stack.push_back(root);
     HTMLParser::pair_t pair;
     HTMLParser parser(pos, end);
@@ -28,8 +26,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
         switch (type) {
         default:
         case sf::ELEM_TEXT:
-            [stack.back() append:
-             [[SFText alloc] initWithText:stringify(pair)]];
+            [stack.back() append:[SFText.alloc initWithText:stringify(pair)]];
             break;
         case sf::ELEM_BEGIN:
             {
@@ -41,8 +38,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
                         ? stringify(key).lowercaseString
                         : stringify(val);
                 }
-                auto node = [[SFElement alloc]
-                             initWithName:stringify(pair).lowercaseString withAttr:map];
+                auto node = [SFElement.alloc initWithName:stringify(pair).lowercaseString attrs:map];
                 [stack.back() append:node];
                 switch (parser.leave_elem()) {
                 case sf::ELEM_ERROR:
@@ -64,7 +60,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
                             for (auto next = e.first; next; ) {
                                  auto node = next;
                                 next = next.next;
-                                [elem insert:node before:nil]; // おっそそ〜。。。
+                                [elem insert:node before:nil];
                             }
                         }
                         stack.erase(stack.begin() + i, stack.end());
@@ -75,19 +71,26 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
             break;
         }
     }
+    for (int i = 1; i < stack.size(); ++i) {
+        for (auto next = stack[i].first; next; ) {
+            auto node = next;
+            next = next.next;
+            [root insert:node before:nil];
+        }
+    }
 }
 
 @implementation SFDocument
 
 + (SFDocument*)documentWithHTML:(NSString*)html
 {
-    auto doc = [[SFDocument alloc] initWithName:@"document"];
+    auto doc = [SFDocument.alloc initWithName:@"document"];
     auto src = html.UTF8String;
     parseHTML(doc, src, src + [html lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
     return doc;
 }
     
-- (id)initWithRoot:(SFElement*)root
+- (instancetype)initWithRoot:(SFElement*)root
 {
     if ((self = [self initWithName:@"<>"])) {
         [self append:root];
