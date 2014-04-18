@@ -34,7 +34,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
                 HTMLParser::pair_t key;
                 HTMLParser::pair_t val;
                 while (auto kind = parser.next_attr(key, val)) {
-                    map[stringify(key)] = kind == sf::ATTR_KEY
+                    map[stringify(key).lowercaseString] = kind == sf::ATTR_KEY
                         ? stringify(key).lowercaseString
                         : stringify(val);
                 }
@@ -101,9 +101,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
 - (SFElement*)getElementById:(NSString*)ID
 {
     for (SFElement *e in self.descendant) { // <(^_^;)
-        if ([[e get:@"id"] isEqualToString:ID]) {
-            return e;
-        }
+        if ([[e get:@"id"] isEqualToString:ID]) return e;
     }
     return nil;
 }

@@ -39,7 +39,7 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
 {
     // NSLog(@"SFSelectorParser.addFilter: name=%@", name);
     // てけとー<(^_^;)
-    [g_UserFilters setObject:parsec forKey:name];
+    g_UserFilters[name] = parsec;
 }
 
 - (instancetype)initWithQuery:(NSString*)query
@@ -76,7 +76,7 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
     } 
     SFCSSFilter* (^parsec)(SFCSSSelectorParser*) = g_UserFilters[[self $:1]];
     if (!parsec) {
-        [self raiseError:[NSString stringWithFormat:@"Unknwon filter name:%@", [self $:1]]];
+        [self raiseError:[NSString stringWithFormat:@"Unknown filter name:%@", [self $:1]]];
     }
     if (![self $:2].length) { // 引数なし
         return parsec(nil);
@@ -109,7 +109,7 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
         tail = head;
     }
     for (SFCSSFilter *next;; ) {
-        if (/*head &&*/ (next = [self parseFilter])) {
+        if ((next = [self parseFilter])) {
             // no-op
         }
         else if ([self scan:RX_ATTR_SELECTOR]) {
@@ -144,5 +144,6 @@ static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary
 {
     [NSException raise:@"SFCSSelectorSyntaxError" format:@"%@", message];
 }
+
 @end
 

@@ -199,8 +199,8 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 + (SFNEquation*)parse:(SFCSSSelectorParser*)parser
 {
-    if ([parser scan:RX_EQ_EVEN]) return [self.alloc initWithScale:2 withBase:0];
-    if ([parser scan:RX_EQ_ODD ]) return [self.alloc initWithScale:2 withBase:1];
+    if ([parser scan:RX_EQ_EVEN]) return [self.alloc initWithScale:2 base:0];
+    if ([parser scan:RX_EQ_ODD ]) return [self.alloc initWithScale:2 base:1];
     if (![parser scan:RX_N_EQUATION]) {
         return nil;
     }
@@ -210,10 +210,10 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
         auto num = [parser $:3]; // \d+
         scale = ([@"-" isEqual:sig] ? -1: 1) * (num.length ? num.intValue: 1);
     }
-    return [self.alloc initWithScale:scale withBase:[parser $:4].intValue];
+    return [self.alloc initWithScale:scale base:[parser $:4].intValue];
 }
 
-- (instancetype)initWithScale:(int)scale withBase:(int)base
+- (instancetype)initWithScale:(int)scale base:(int)base
 {
     if((self = [self init])) {
         self->_scale = scale;
@@ -252,44 +252,43 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
     [SFCSSSelectorParser addFilter:@"nth-child"
                               with:^SFCSSFilter*(SFCSSSelectorParser *parser)
-    { return [self parse:parser withKind:NTH_CHILD]; }];
+    { return [self parse:parser kind:NTH_CHILD]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-last-child"
                               with:^SFCSSFilter*(SFCSSSelectorParser *parser)
-     { return [self parse:parser withKind:NTH_CHILD_REV]; }];
+     { return [self parse:parser kind:NTH_CHILD_REV]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-of-type"
                               with:^SFCSSFilter*(SFCSSSelectorParser *parser)
-     { return [self parse:parser withKind:NTH_OF_TYPE]; }];
+     { return [self parse:parser kind:NTH_OF_TYPE]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-last-of-type"
                               with:^SFCSSFilter*(SFCSSSelectorParser *parser)
-     { return [self parse:parser withKind:NTH_OF_TYPE_REV]; }];
+     { return [self parse:parser kind:NTH_OF_TYPE_REV]; }];
     
     [SFCSSSelectorParser addFilter:@"first-child"
                               with:^SFCSSFilter*(id)
      { return [self.alloc initWithKind:NTH_CHILD
-                          withEquation:[SFNEquation.alloc initWithScale:0 withBase:0]]; }];
+                              equation:[SFNEquation.alloc initWithScale:0 base:0]]; }];
     
     [SFCSSSelectorParser addFilter:@"last-child"
                               with:^SFCSSFilter*(id)
      { return [self.alloc initWithKind:NTH_CHILD_REV
-                          withEquation:[SFNEquation.alloc initWithScale:0 withBase:0]]; }];
+                              equation:[SFNEquation.alloc initWithScale:0 base:0]]; }];
 
 }
 
-+ (SFNEquationFilter*)parse:(SFCSSSelectorParser*)parser
-                   withKind:(enum EquationKind)kind
++ (SFNEquationFilter*)parse:(SFCSSSelectorParser*)parser kind:(enum EquationKind)kind
 {
     SFNEquation *eq = [SFNEquation parse:parser];
     if (!eq) {
         [parser raiseError:[NSString stringWithFormat:
                 @"nth-* must be followed by valid expression."]];
     }
-    return [self.alloc initWithKind:kind withEquation:eq];
+    return [self.alloc initWithKind:kind equation:eq];
 }
 
-- (instancetype)initWithKind:(enum EquationKind)kind withEquation:(SFNEquation*)eq
+- (instancetype)initWithKind:(enum EquationKind)kind equation:(SFNEquation*)eq
 {
     if((self = [self init])) {
         self->_kind = kind;

@@ -40,12 +40,12 @@ static BOOL isText(SFNode *node)
 
 - (NSString*)text
 {
-    switch(_size) {
+    switch (_size) {
     case 1: return _first.text;
     case 0: return @"";
     }
     NSMutableString *buf = NSMutableString.string;
-    for(SFNode *cur = _first; cur != _guard; cur = cur->_next) {
+    for (SFNode *cur = _first; cur != _guard; cur = cur->_next) {
         [buf appendString:cur.text];
     }
     return buf;
@@ -59,7 +59,7 @@ static BOOL isText(SFNode *node)
 
 - (instancetype)init
 {
-    if((self = [super init])) {
+    if ((self = [super init])) {
         self->_name = @"(*_*) bug?";
         self->_first = [SFNode.alloc init];
         self->_guard = _first;
@@ -70,7 +70,7 @@ static BOOL isText(SFNode *node)
 
 - (instancetype)initWithName:(NSString *)name
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_name = [name copy];
     }
     return self;
@@ -78,7 +78,7 @@ static BOOL isText(SFNode *node)
 
 - (instancetype)initWithName:(NSString*)name attrs:(NSDictionary*)attributes
 {
-    if((self = [self initWithName:name])) {
+    if ((self = [self initWithName:name])) {
         self->_attributes = [attributes mutableCopy];
     }
     return self;
@@ -87,10 +87,10 @@ static BOOL isText(SFNode *node)
 - (NSString*)description
 {
     NSMutableString *buf = [NSMutableString stringWithString:_name];
-    for(NSString *key in _attributes) {
+    for (NSString *key in _attributes) {
         [buf appendFormat:@" %@='%@'", key, _attributes[key]];
     }
-    if(_size == 1 && isText(_first) && _first.text.length < 32) {
+    if (_size == 1 && isText(_first) && _first.text.length < 32) {
         return [NSString stringWithFormat:@"<%@>%@</%@>", buf, _first.text, _name];
     }
     return _size
@@ -101,12 +101,12 @@ static BOOL isText(SFNode *node)
 - (NSString*)stringify
 {
     NSMutableString *buf = [NSMutableString stringWithFormat:@"<%@", _name];
-    for(NSString *key in _attributes) {
+    for (NSString *key in _attributes) {
         [buf appendFormat:@" %@='%@'", key, SFTextEncode(_attributes[key])];
     }
-    if(_size) {
+    if (_size) {
         [buf appendString:@">"];
-        for(SFNode *cur = _first; cur != _guard; cur = cur->_next) {
+        for (SFNode *cur = _first; cur != _guard; cur = cur->_next) {
             [buf appendString:[cur stringify]];
         }
         [buf appendFormat:@"</%@>", _name];
@@ -121,7 +121,7 @@ static BOOL isText(SFNode *node)
 - (SFElement*)root
 {
     SFElement *cur = self;
-    while(cur.parent) {
+    while (cur.parent) {
         cur = cur.parent;
     }
     return cur;
@@ -142,8 +142,8 @@ static BOOL isText(SFNode *node)
 // readonly property
 - (SFElement*)firstElement
 {
-    for(SFNode *cur = _first; cur != _guard; cur = cur->_next) {
-        if(!isText(cur)) {
+    for (SFNode *cur = _first; cur != _guard; cur = cur->_next) {
+        if (!isText(cur)) {
             return (SFElement*) cur;
         }
     }
@@ -153,32 +153,32 @@ static BOOL isText(SFNode *node)
 // readonly property
 - (int)nodeIndex
 {
-    if(!_parent) return -1;
-    if( _parent->_changed) [_parent updateIndex];
+    if (!_parent) return -1;
+    if ( _parent->_changed) [_parent updateIndex];
     return _nodeIndex;
 }
 
 // readonly property
 - (int)typeIndex
 {
-    if(!_parent) return -1;
-    if( _parent->_changed) [_parent updateIndex];
+    if (!_parent) return -1;
+    if ( _parent->_changed) [_parent updateIndex];
     return _typeIndex;
 }
 
 // readonly property
 - (int)lastNodeIndex
 {
-    if(!_parent) return -1;
-    if( _parent->_changed) [_parent updateIndex];
+    if (!_parent) return -1;
+    if ( _parent->_changed) [_parent updateIndex];
     return _lastNodeIndex;
 }
 
 // readonly property
 - (int)lastTypeIndex
 {
-    if(!_parent) return -1;
-    if( _parent->_changed) [_parent updateIndex];
+    if (!_parent) return -1;
+    if ( _parent->_changed) [_parent updateIndex];
     return _lastTypeIndex;
 }
 
@@ -189,7 +189,7 @@ static BOOL isText(SFNode *node)
     // <(^_^;)
     void (^__unsafe_unretained callee)(SFElement*) __block = 0;
     void (^append)(SFElement*) = ^void(SFElement *elem) {
-        for(SFElement *cur = elem.firstElement; cur; cur = cur->_nextElem) {
+        for (SFElement *cur = elem.firstElement; cur; cur = cur->_nextElem) {
             [a addObject:cur];
             callee(cur);
         }
@@ -206,30 +206,30 @@ static BOOL isText(SFNode *node)
 - (void)insert:(SFNode*)node
         before:(SFNode*)dest
 {
-    if(!dest) {
+    if (!dest) {
         dest = _guard;
     }
     else if(dest->_parent != self) {
         return;
     }
-    if(node->_parent) {
-        if(self == node->_parent) {
+    if (node->_parent) {
+        if (self == node->_parent) {
             return;
         }
         [node->_parent remove:node];
     }
-    if(!isText(node)) {
+    if (!isText(node)) {
         SFElement *elem = (SFElement*) node;
         SFElement *prev = nil;
         SFElement *next = nil;
-        for(SFNode*t=dest->_prev;t;t=t->_prev) if(!isText(t)) { prev = (SFElement*)t; break; }
-        for(SFNode*t=dest       ;t;t=t->_next) if(!isText(t)) { next = (SFElement*)t; break; }
+        for (SFNode*t=dest->_prev;t;t=t->_prev) if(!isText(t)) { prev = (SFElement*)t; break; }
+        for (SFNode*t=dest       ;t;t=t->_next) if(!isText(t)) { next = (SFElement*)t; break; }
         if(prev) {
             NSAssert(prev->_nextElem == next, @"");
             prev->_nextElem = elem;
             elem->_prevElem = prev;
         }
-        if(next) {
+        if (next) {
             NSAssert(next->_prevElem == prev, @"");
             next->_prevElem = elem;
             elem->_nextElem = next;
@@ -238,7 +238,7 @@ static BOOL isText(SFNode *node)
     node->_parent = self;
     node->_next = dest;
     node->_prev = dest->_prev;
-    if(dest->_prev) {
+    if (dest->_prev) {
         dest->_prev->_next = node;
     }
     else {
@@ -251,18 +251,18 @@ static BOOL isText(SFNode *node)
 
 - (BOOL)remove:(SFNode*)node
 {
-    if(node->_parent != self) {
+    if (node->_parent != self) {
         return NO;
     }
     NSAssert(node != _guard && node->_next, @"Cannot remove a gurad!");
-    if(!isText(node)) {
+    if (!isText(node)) {
         SFElement *elem = (SFElement*) node;
         if(elem->_prevElem) elem->_prevElem->_nextElem = elem->_nextElem;
         if(elem->_nextElem) elem->_nextElem->_prevElem = elem->_prevElem;
         elem->_prevElem = nil;
         elem->_nextElem = nil;
     }
-    if((node->_next->_prev = node->_prev)) {
+    if ((node->_next->_prev = node->_prev)) {
         node->_prev->_next = node->_next;
     }
     else {
@@ -280,11 +280,11 @@ static BOOL isText(SFNode *node)
 {
     _size = 0, _changed = YES;
     // _prevは弱参照(_nextは強参照)なので逆方向から
-    for(SFNode *node = _guard; node; node = node->_prev) {
+    for (SFNode *node = _guard; node; node = node->_prev) {
         node->_parent = nil;
         node->_prev = nil;
         node->_next = nil;
-        if(!isText(node)) {
+        if (!isText(node)) {
             SFElement *elem = (SFElement*) node;
             elem->_prevElem = nil;
             elem->_nextElem = nil;
@@ -295,8 +295,8 @@ static BOOL isText(SFNode *node)
 
 - (BOOL)contains:(SFNode*)node
 {
-    for(SFElement *cur = node.parent; cur; cur = cur.parent) {
-        if(cur == self) {
+    for (SFElement *cur = node.parent; cur; cur = cur.parent) {
+        if (cur == self) {
             return YES;
         }
     }
@@ -313,7 +313,7 @@ static BOOL isText(SFNode *node)
 {
     //if([key isEqualToString:@"id"]) {
     //}
-    if(!value) {
+    if (!value) {
         [_attributes removeObjectForKey:key];
         return;
     }
@@ -337,11 +337,11 @@ static BOOL isText(SFNode *node)
     int i = 0;
     int j = 0;
     SFElement *last = nil;
-    for(SFElement *cur = self.firstElement; cur; cur = cur->_nextElem) {
+    for (SFElement *cur = self.firstElement; cur; cur = cur->_nextElem) {
         last = cur;
         cur->_nodeIndex = i++;
         cur->_typeIndex = 0;
-        if([name isEqualToString:cur->_name]) {
+        if ([name isEqualToString:cur->_name]) {
             cur->_typeIndex = ++j;
             continue;
         }
@@ -350,9 +350,9 @@ static BOOL isText(SFNode *node)
     }
     i = 0;
     j = 0;
-    for(SFElement *cur = last; cur; cur = cur->_prevElem) {
+    for (SFElement *cur = last; cur; cur = cur->_prevElem) {
         cur->_lastNodeIndex = i++;
-        if(!cur->_typeIndex) {
+        if (!cur->_typeIndex) {
             j = 0;
         }
         cur->_lastTypeIndex = j++;

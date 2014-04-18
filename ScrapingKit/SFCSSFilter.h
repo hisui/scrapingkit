@@ -62,12 +62,12 @@ enum EquationKind
 
 // E:nth-*(Xn+Y)
 @interface SFNEquation : SFCSSFilter
-- (instancetype)initWithScale:(int)scale withBase:(int)base;
+- (instancetype)initWithScale:(int)scale base:(int)base;
 @end
 
 // E:nth-[last-]child, nth-[last-]type-of
 @interface SFNEquationFilter : SFCSSFilter
-- (instancetype)initWithKind:(enum EquationKind)kind withEquation:(SFNEquation*)eq;
+- (instancetype)initWithKind:(enum EquationKind)kind equation:(SFNEquation*)eq;
 @end
 
 // E:not(...)
