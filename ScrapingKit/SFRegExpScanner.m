@@ -19,7 +19,7 @@
 
 - (void)setCursor:(NSInteger)i
 {
-    if(_source.length < (_cursor = i)) _cursor = _source.length;
+    if (i < _source.length) _cursor = i;
 }
 
 - (NSInteger)remaining
@@ -34,7 +34,7 @@
 
 - (instancetype)initWith:(NSString*)data
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_source = data;
     }
     return self;
@@ -43,8 +43,8 @@
 - (NSTextCheckingResult*)scan:(NSRegularExpression*)pattern
 {
     NSRange next = NSMakeRange(_cursor, _source.length - _cursor);
-    if (( _last = [pattern.copy firstMatchInString:_source options:0 range:next])
-       && _last.range.length != NSNotFound)
+    if (( _last = [pattern firstMatchInString:_source options:0 range:next])
+       && _last.range.location != NSNotFound)
     {
         _cursor += _last.range.length;
     }
