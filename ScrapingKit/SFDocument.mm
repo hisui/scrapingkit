@@ -3,17 +3,34 @@
 #import "SFDocument+Local.h"
 #import "SFElement.h"
 #include <deque>
+#include <vector>
 #include "htmlparse.hpp"
+#include "entities.hpp"
 
 typedef sf::basic_htmlparser<const char*> HTMLParser;
 
+using std::get;
+
 static NSString *stringify(const HTMLParser::pair_t &pair)
 {
-    auto tmp =
-    [NSString.alloc initWithBytes:pair.first
-                           length:pair.second - pair.first
-                         encoding:NSUTF8StringEncoding];
-    return tmp ? tmp: @"";
+    std::vector<uint32_t> dest;
+    auto pos = sf::make_unicode_iterator(get<0>(pair));
+    auto end = sf::make_unicode_iterator(get<1>(pair));
+    while (pos != end) {
+        uint32_t c;
+        auto last = pos;
+        auto head = sf::htmlentity_decode_next(pos, end, c);
+        if (head == end) {
+            dest.insert(dest.end(), pos, end);
+            break;
+        }
+        dest.insert(dest.end(), last, head);
+        dest.push_back(c);
+    }
+    std::transform(dest.begin(), dest.end(), dest.begin(), CFSwapInt32HostToBig);
+    return [NSString.alloc initWithBytes:&dest[0]
+                                  length:dest.size() * 4
+                                encoding:NSUTF32StringEncoding];
 }
 
 static void parseHTML(SFElement *root, const char *pos, const char *end)
@@ -30,7 +47,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
             break;
         case sf::ELEM_BEGIN:
             {
-                NSMutableDictionary *map = NSMutableDictionary.dictionary;
+                auto map = NSMutableDictionary.dictionary;
                 HTMLParser::pair_t key;
                 HTMLParser::pair_t val;
                 while (auto kind = parser.next_attr(key, val)) {

@@ -27,7 +27,7 @@ static NSRegularExpression *const RX_SUBJECTOR =
                                           options:0 error:NULL];
 
 // ^SFCSSFilter*(SFSelectorParser*)
-static NSMutableDictionary *const g_UserFilters = NSMutableDictionary.dictionary;
+static auto *const g_UserFilters = NSMutableDictionary.dictionary;
 
 @implementation SFCSSSelectorParser
 {

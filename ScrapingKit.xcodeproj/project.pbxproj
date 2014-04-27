@@ -107,6 +107,7 @@
 		245B0C19175AFC5700B946AD /* SFNodeSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNodeSelection.m; sourceTree = "<group>"; };
 		245B0C1C175B2D0200B946AD /* SFNodeSelection+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeSelection+Local.h"; sourceTree = "<group>"; };
 		245B0C20175B3BC800B946AD /* SFNodeList+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Local.h"; sourceTree = "<group>"; };
+		24E8B58E190D82B700191BC0 /* codes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = codes.hpp; sourceTree = "<group>"; };
 		24EF1F5A175B431000EA64B1 /* SFNodeList+Dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Dot.h"; sourceTree = "<group>"; };
 		24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFNodeList+Dot.m"; sourceTree = "<group>"; };
 		24EF1F5E175C25A800EA64B1 /* SFScrapingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFScrapingKit.h; sourceTree = "<group>"; };
@@ -215,6 +216,7 @@
 			children = (
 				245B0B831754D04500B946AD /* htmlparse.hpp */,
 				245B0C001756306900B946AD /* entities.hpp */,
+				24E8B58E190D82B700191BC0 /* codes.hpp */,
 			);
 			name = HTML;
 			sourceTree = "<group>";
@@ -321,6 +323,7 @@
 		245B0B261754975F00B946AD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastTestingUpgradeCheck = 0510;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = segfault.jp;
 			};

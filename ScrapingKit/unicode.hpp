@@ -113,36 +113,47 @@ struct utf8_decoder
         base += 1 + count_bytes(*base);
         return *this;
     }
-        
-    bool operator!=(const utf8_decoder &rhs) const
+    
+    utf8_decoder operator++(int)
     {
-        return base != rhs.base;
+        auto old = *this;
+        this->operator++();
+        return old;
     }
-        
+    
+    bool operator!=(const utf8_decoder &rhs) const { return base != rhs.base; }
+    bool operator==(const utf8_decoder &rhs) const { return base == rhs.base; }
+    
     InputIterator base;
 };
 
 template<typename V, typename I>
-using iter_of = std::is_same<V,typename std::iterator_traits<I>::value_type>;
+using enable_if_of = std::enable_if<std::is_same<V,typename std::iterator_traits<I>::value_type>{}>;
 
-template<typename II, typename std::enable_if<iter_of<uint32_t,II>::value>::type *& = enabler>
-utf32_decoder<II> make_unicode_iterator(const II &i)
+template<typename InputIterator, typename enable_if_of<uint32_t,InputIterator>::type *& = enabler>
+utf32_decoder<InputIterator> make_unicode_iterator(const InputIterator &i)
 {
-	return utf32_decoder<II>(i);
+	return utf32_decoder<InputIterator>(i);
 }
     
-template<typename II, typename std::enable_if<iter_of<uint16_t,II>::value>::type *& = enabler>
-utf16_decoder<II> make_unicode_iterator(const II &i)
+template<typename InputIterator, typename enable_if_of<uint16_t,InputIterator>::type *& = enabler>
+utf16_decoder<InputIterator> make_unicode_iterator(const InputIterator &i)
 {
-    return utf16_decoder<II>(i);
+    return utf16_decoder<InputIterator>(i);
 }
     
-template<typename II, typename std::enable_if<iter_of<char,II>::value>::type *& = enabler>
-utf8_decoder<II> make_unicode_iterator(const II &i)
+template<typename InputIterator, typename enable_if_of<uint8_t,InputIterator>::type *& = enabler>
+utf8_decoder<InputIterator> make_unicode_iterator(const InputIterator &i)
 {
-    return utf8_decoder<II>(i);
+    return utf8_decoder<InputIterator>(i);
 }
-
+    
+template<typename InputIterator, typename enable_if_of<char,InputIterator>::type *& = enabler>
+utf8_decoder<InputIterator> make_unicode_iterator(const InputIterator &i)
+{
+    return utf8_decoder<InputIterator>(i);
+}
+    
 template<typename InputIterator, uint32_t Eof=uint32_t(-1)>
 class basic_scanner
 {

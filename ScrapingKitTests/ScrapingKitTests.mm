@@ -17,7 +17,7 @@ static NSString *SAMPLE_HTML = @
 "      <ul id='list_a'>"
 "        <li id='a'>A</li>"
 "        <li id='b'>B</li>"
-"        <li id='c'>C</li>"
+"        <li id='c'>C&amp;</li>"
 "      </ul>"
 "      <ul id='list_b'>"
 "        <li for='a'>1</li>"

@@ -3,7 +3,6 @@
 #import "SFCSSQuery+Local.h"
 #import "SFNode+Local.h"
 #import "SFCSSSelectorParser.h"
-
 #include <unordered_map>
 #include <deque>
 
@@ -11,7 +10,7 @@ namespace
 {
 
 // セレクターを適用して孫要素の集合を得る
-class CssQueryProcessor
+class QueryProcessor
 {
     enum Trib: uint64_t
     {
@@ -33,7 +32,7 @@ class CssQueryProcessor
         size_t level;
     };
 public:
-    CssQueryProcessor(SFSelectorChain *head, SFSelectorChain *subj, SFElement *context)
+    QueryProcessor(SFSelectorChain *head, SFSelectorChain *subj, SFElement *context)
     :elements(context.descendant)
     ,refs(NSMutableDictionary.dictionary)
     ,head(head)
@@ -42,7 +41,7 @@ public:
     ,i(0)
     {
         for (SFElement *e in elements) {
-            dp.insert(std::make_pair(uintptr_t(e), 0));
+            dp.insert({uintptr_t(e), 0});
         }
     }
     
@@ -174,9 +173,10 @@ private:
 }
 
 @implementation SFSelectorChain
+
 - (instancetype)initWithTail:(SFSelectorChain*)chain
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->tail = chain;
     }
     return self;
@@ -184,7 +184,7 @@ private:
 
 - (NSString*)description
 {
-    NSMutableString *buf = NSMutableString.string;
+    auto buf = NSMutableString.string;
     if(tail) {
         [buf appendString:tail.description];
     }
@@ -194,6 +194,7 @@ private:
     }
     return buf;
 }
+
 @end
 
 @interface SFSelectorEnumeration : NSObject <NSFastEnumeration>
@@ -201,14 +202,15 @@ private:
 
 @implementation SFSelectorEnumeration
 {
-    std::unique_ptr<CssQueryProcessor> _processor;
+    std::unique_ptr<QueryProcessor> _processor;
 }
+
 - (instancetype)initWithContext:(SFElement*)context
              withHead:(SFSelectorChain*)head
              withSubj:(SFSelectorChain*)subj
 {
     if ((self = [self init])) {
-        self->_processor.reset(new CssQueryProcessor(head, subj, context));
+        self->_processor.reset(new QueryProcessor(head, subj, context));
     }
     return self;
 }
@@ -229,6 +231,7 @@ private:
     }
 	return count;
 }
+
 @end
 
 @implementation SFCSSQuery
@@ -254,7 +257,7 @@ private:
 
 - (SFElement*)find1st:(SFElement*)context
 {
-    return CssQueryProcessor(_head, _subj, context).next();
+    return QueryProcessor(_head, _subj, context).next();
 }
 
 - (id <NSFastEnumeration>)findAll:(SFElement*)context
@@ -263,6 +266,7 @@ private:
                                                  withHead:_head
                                                  withSubj:_subj];
 }
+
 @end
 
 @implementation SFQueryResult
