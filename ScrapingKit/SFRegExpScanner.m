@@ -46,7 +46,7 @@
     if (( _last = [pattern firstMatchInString:_source options:0 range:next])
        && _last.range.location != NSNotFound)
     {
-        _cursor += _last.range.length;
+        _cursor = _last.range.location + _last.range.length;
     }
     return _last;
 }
