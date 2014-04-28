@@ -166,13 +166,12 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
             auto pos = range.location;
             auto end = range.location + range.length;
             return pos != NSNotFound
-            && (pos == 0           || [data characterAtIndex:pos-1] == ' ')
-            && (end == data.length || [data characterAtIndex:end  ] == ' ');
+                && (pos == 0           || isblank([data characterAtIndex:pos-1]))
+                && (end == data.length || isblank([data characterAtIndex:end  ]));
         }
-        case MATCH_PREFIX: return [data hasPrefix:_data];
-        case MATCH_SUFFIX: return [data hasSuffix:_data];
-        case MATCH_SUBSTR:
-            return [data rangeOfString:_data].location != NSNotFound;
+        case MATCH_PREFIX: return !_data.length || [data hasPrefix:_data];
+        case MATCH_SUFFIX: return !_data.length || [data hasSuffix:_data];
+        case MATCH_SUBSTR: return !_data.length || [data rangeOfString:_data].location != NSNotFound;
     }
     return NO;
 }
