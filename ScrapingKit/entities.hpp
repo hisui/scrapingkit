@@ -14,10 +14,10 @@ namespace sf {
     template<typename InputIterator>
     InputIterator htmlentity_decode_next(InputIterator &pos, InputIterator end, uint32_t &ord)
     {
+        auto i = pos;
         for (;;) {
-            auto i = std::find(pos, end, '&');
+            if ((i = std::find(i, end, '&')) == end) return end;
             auto j = i;
-            if (i == end) return end;
             auto k = std::find(++i, end, ';');
             if (k != end) {
                 ord = htmlentity_decode(i, k);
