@@ -121,7 +121,7 @@ static auto *const g_UserFilters = NSMutableDictionary.dictionary;
                     : MATCH_EQUAL]
             : [SFAttributeFilter.alloc initWithName:[self $:1]
                                            withData:@""
-                                           withKind:MATCH_SUBSTR];
+                                           withKind:MATCH_PREFIX];
         }
         else if ([self scan:RX_ID_SELECTOR]) {
             next = [[self $:1] isEqualToString:@"."]
