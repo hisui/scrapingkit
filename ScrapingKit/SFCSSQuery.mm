@@ -56,7 +56,7 @@ public:
                 return dest;
             }
         }
-        while(i != elements.count) {
+        while (i != elements.count) {
             __unsafe_unretained SFElement *elem = elements[i++];
             __unsafe_unretained SFElement *dest = subj ? nil: elem;
             if (trace(elem, dest, head, 0) == TRI_SUCCESS) {
@@ -185,11 +185,11 @@ private:
 - (NSString*)description
 {
     auto buf = NSMutableString.string;
-    if(tail) {
+    if (tail) {
         [buf appendString:tail.description];
     }
     [buf appendFormat:@"%c", char(combinator)];
-    for(auto cur = filter; cur; cur = cur->next) {
+    for (auto cur = filter; cur; cur = cur->next) {
         [buf appendString:cur.dump];
     }
     return buf;
@@ -219,13 +219,13 @@ private:
                                   objects:(__unsafe_unretained id*)stackbuf
                                     count:(NSUInteger)len
 {
-	int count = 0;
+	NSUInteger count = 0;
 	if (state->state++ == 0) {
 		state->mutationsPtr = &state->extra[0];
 	}
     if (auto e = _processor->next()) {
         state->itemsPtr = stackbuf;
-		while (e && count < len) {
+		while (e && count+1 < len) {
 			stackbuf[count++] = e, e = _processor->next();
 		}
     }

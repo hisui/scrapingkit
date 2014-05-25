@@ -169,8 +169,8 @@ public:
 	uint32_t get        () { return pos == end ? eof: uint32_t(*pos  ); }
 	uint32_t get_and_inc() { return pos == end ? eof: uint32_t(*pos++); }
 	uint32_t inc_and_get() {
-		if(  pos == end) return eof;
-		if(++pos == end) return eof;
+		if (  pos == end) return eof;
+		if (++pos == end) return eof;
 		return *pos;
 	}
 

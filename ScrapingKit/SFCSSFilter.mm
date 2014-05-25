@@ -55,12 +55,10 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 + (void)initialize
 {
-    if(self != SFUserFilter.class) {
-        [SFCSSSelectorParser addFilter:[self filterIdByClass:class_getName(self)] with:
-         ^SFCSSFilter*(id)
-         {
-             return [self.alloc init];
-         }];
+    if (self != SFUserFilter.class) {
+        [SFCSSSelectorParser addFilter:[self filterIdByClass:class_getName(self)] with:^(id) {
+            return [self.alloc init];
+        }];
     }
 }
 
@@ -115,7 +113,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 - (instancetype)initWithName:(NSString*)name
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_name = name.lowercaseString;
     }
     return self;
@@ -142,7 +140,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
                     withData:(NSString*)data
                     withKind:(enum MatchType)kind
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_name = name;
         self->_data = data;
         self->_type = kind;
@@ -153,13 +151,8 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
-    NSString *data = [elem get:_name];
-    if(!data) {
-        return NO;
-    }
-    switch(_type) {
-        case MATCH_EQUAL:
-            return [data isEqualToString:_data];
+    if (auto data = [elem get:_name]) switch (_type) {
+        case MATCH_EQUAL: return [data isEqualToString:_data];
         case MATCH_EQUAL_PART:
         {
             NSRange range = [data rangeOfString:_data];
@@ -214,7 +207,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 - (instancetype)initWithScale:(int)scale base:(int)base
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_scale = scale;
         self->_base  = base;
     }
@@ -250,28 +243,28 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 {
 
     [SFCSSSelectorParser addFilter:@"nth-child"
-                              with:^SFCSSFilter*(SFCSSSelectorParser *parser)
+                              with:^(SFCSSSelectorParser *parser)
     { return [self parse:parser kind:NTH_CHILD]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-last-child"
-                              with:^SFCSSFilter*(SFCSSSelectorParser *parser)
+                              with:^(SFCSSSelectorParser *parser)
      { return [self parse:parser kind:NTH_CHILD_REV]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-of-type"
-                              with:^SFCSSFilter*(SFCSSSelectorParser *parser)
+                              with:^(SFCSSSelectorParser *parser)
      { return [self parse:parser kind:NTH_OF_TYPE]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-last-of-type"
-                              with:^SFCSSFilter*(SFCSSSelectorParser *parser)
+                              with:^(SFCSSSelectorParser *parser)
      { return [self parse:parser kind:NTH_OF_TYPE_REV]; }];
     
     [SFCSSSelectorParser addFilter:@"first-child"
-                              with:^SFCSSFilter*(id)
+                              with:^(id)
      { return [self.alloc initWithKind:NTH_CHILD
                               equation:[SFNEquation.alloc initWithScale:0 base:0]]; }];
     
     [SFCSSSelectorParser addFilter:@"last-child"
-                              with:^SFCSSFilter*(id)
+                              with:^(id)
      { return [self.alloc initWithKind:NTH_CHILD_REV
                               equation:[SFNEquation.alloc initWithScale:0 base:0]]; }];
 
@@ -289,7 +282,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 - (instancetype)initWithKind:(enum EquationKind)kind equation:(SFNEquation*)eq
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_kind = kind;
         self->_eq   = eq;
     }
@@ -325,15 +318,14 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 + (void)initialize
 {
-    [SFCSSSelectorParser addFilter:@"not" with:^SFCSSFilter*(SFCSSSelectorParser *parser)
-    {
+    [SFCSSSelectorParser addFilter:@"not" with:^(SFCSSSelectorParser *parser) {
         return [self.alloc initWithFilter:[parser parseSelector]];
     }];
 }
 
 - (instancetype)initWithFilter:(SFCSSFilter*)filter
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_filter = filter;
     }
     return self;
@@ -364,23 +356,22 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 + (void)initialize
 {
-    [SFCSSSelectorParser addFilter:@"matches" with:^SFCSSFilter*(SFCSSSelectorParser *parser)
-     {
-         NSMutableArray *a = NSMutableArray.array;
-         do {
-             auto next = [parser parseSelector];
-             if (!next) {
-                 [parser raiseError:@"Expected SIMPLE_SELECTOR, but not found!"];
-             }
-             [a addObject:next];
-         } while ([parser scan:RX_COMMA_SEPARATOR]);
-         return [self.alloc initWithFilters:a];
-     }];
+    [SFCSSSelectorParser addFilter:@"matches" with:^(SFCSSSelectorParser *parser) {
+        auto a = NSMutableArray.array;
+        do {
+            auto next = [parser parseSelector];
+            if (!next) {
+                [parser raiseError:@"Expected SIMPLE_SELECTOR, but not found!"];
+            }
+            [a addObject:next];
+        } while ([parser scan:RX_COMMA_SEPARATOR]);
+        return [self.alloc initWithFilters:a];
+    }];
 }
 
 - (instancetype)initWithFilters:(NSArray*)filters
 {
-    if((self = [self init])) {
+    if ((self = [self init])) {
         self->_filters = filters;
     }
     return self;
@@ -404,8 +395,8 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 - (NSString*)dump
 {
     NSMutableString *buf = NSMutableString.string;
-    for(SFCSSFilter *head in _filters) {
-        if(buf.length)
+    for (SFCSSFilter *head in _filters) {
+        if (buf.length)
         [buf appendString:@", "];
         [buf appendString:head.description];
     }
@@ -484,11 +475,11 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 {
 
     [SFCSSSelectorParser addFilter:@"nth-match"
-                              with:^SFCSSFilter*(SFCSSSelectorParser *parser)
+                              with:^(SFCSSSelectorParser *parser)
      { return [self parse:parser withLast:NO]; }];
     
     [SFCSSSelectorParser addFilter:@"nth-last-match"
-                              with:^SFCSSFilter*(SFCSSSelectorParser *parser)
+                              with:^(SFCSSSelectorParser *parser)
      { return [self parse:parser withLast:YES]; }];
 
 }

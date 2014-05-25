@@ -45,7 +45,7 @@ public:
 	bool read_name(pair_t &out)
 	{
 		skip_whitespace();
-		if(!isalpha(get())) {
+		if (!isalpha(get())) {
 			return false;
 		}
 		auto tmp = pos;
@@ -79,7 +79,7 @@ public:
 
 	void skip_whitespace()
 	{
-		while(pos != end && is_whitespace(*pos)) {
+		while (pos != end && is_whitespace(*pos)) {
 			++pos;
 		}
 	}
@@ -87,8 +87,8 @@ public:
 	AttrType next_attr(pair_t &key, pair_t &val)
 	{
 		auto save = pos;
-		if(!read_name(key)) return ATTR_END;
-		if(!read_char('=')) return ATTR_KEY;
+		if (!read_name(key)) return ATTR_END;
+		if (!read_char('=')) return ATTR_KEY;
 		skip_whitespace();
 		auto i = pos;
 		auto c = get();
@@ -106,7 +106,7 @@ public:
 			return ATTR_END;
 		}
 		val = std::make_pair(i, pos);
-		if(*pos == c) {
+		if (*pos == c) {
 			++pos;
 		}
 		return ATTR_KEY_VALUE;
@@ -115,28 +115,28 @@ public:
 	ElemType enter_elem(pair_t &out)
 	{
 		auto save = pos;
-		while(pos != end) {
-			if(save != (pos = std::find(pos, end, '<'))) {
+		while (pos != end) {
+			if (save != (pos = std::find(pos, end, '<'))) {
 				out = std::make_pair(save, pos);
 				return ELEM_TEXT;
 			}
 			++pos;
-			if(read_char('/')) {
-				if(!(read_name(out) && read_char('>'))) {
+			if (read_char('/')) {
+				if (!(read_name(out) && read_char('>'))) {
 					continue;
 				}
 				return ELEM_CLOSE;
 			}
-			if(read_name(out)) {
+			if (read_name(out)) {
 				return ELEM_BEGIN;
 			}
-			if(read_char('!')
+			if (read_char('!')
 				&& get_and_inc() == '-'
 				&& get_and_inc() == '-')
 			{
 				auto p = "-->";
 				auto i = std::search(pos, end, p, p+3);
-				if(i == end) {
+				if (i == end) {
 					continue;
 				}
 				out = std::make_pair(pos, i);

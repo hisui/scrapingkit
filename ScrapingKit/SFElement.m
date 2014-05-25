@@ -209,7 +209,7 @@ static BOOL isText(SFNode *node)
     if (!dest) {
         dest = _guard;
     }
-    else if(dest->_parent != self) {
+    else if (dest->_parent != self) {
         return;
     }
     if (node->_parent) {
@@ -222,9 +222,9 @@ static BOOL isText(SFNode *node)
         SFElement *elem = (SFElement*) node;
         SFElement *prev = nil;
         SFElement *next = nil;
-        for (SFNode*t=dest->_prev;t;t=t->_prev) if(!isText(t)) { prev = (SFElement*)t; break; }
-        for (SFNode*t=dest       ;t;t=t->_next) if(!isText(t)) { next = (SFElement*)t; break; }
-        if(prev) {
+        for (SFNode*t=dest->_prev;t;t=t->_prev) if (!isText(t)) { prev = (SFElement*)t; break; }
+        for (SFNode*t=dest       ;t;t=t->_next) if (!isText(t)) { next = (SFElement*)t; break; }
+        if (prev) {
             NSAssert(prev->_nextElem == next, @"");
             prev->_nextElem = elem;
             elem->_prevElem = prev;
@@ -257,8 +257,8 @@ static BOOL isText(SFNode *node)
     NSAssert(node != _guard && node->_next, @"Cannot remove a gurad!");
     if (!isText(node)) {
         SFElement *elem = (SFElement*) node;
-        if(elem->_prevElem) elem->_prevElem->_nextElem = elem->_nextElem;
-        if(elem->_nextElem) elem->_nextElem->_prevElem = elem->_prevElem;
+        if (elem->_prevElem) elem->_prevElem->_nextElem = elem->_nextElem;
+        if (elem->_nextElem) elem->_nextElem->_prevElem = elem->_prevElem;
         elem->_prevElem = nil;
         elem->_nextElem = nil;
     }
@@ -311,8 +311,6 @@ static BOOL isText(SFNode *node)
 - (void)set:(NSString*)value
      forKey:(NSString*)key
 {
-    //if([key isEqualToString:@"id"]) {
-    //}
     if (!value) {
         [_attributes removeObjectForKey:key];
         return;
