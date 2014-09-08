@@ -48,30 +48,30 @@ static NSString *TEST_HTML =
 {
     
     // 単一のタグを選択
-    STAssertEqualObjects
-    (@[@"<title>test</title>"], [self querySelectorAll:@"title"], nil);
+    XCTAssertEqualObjects
+    (@[@"<title>test</title>"], [self querySelectorAll:@"title"]);
     
     // ルートを選択
-    STAssertEqualObjects
-    (@[@"<html> ... </html>"], [self querySelectorAll:@"html"], nil);
+    XCTAssertEqualObjects
+    (@[@"<html> ... </html>"], [self querySelectorAll:@"html"]);
     
     // 複数のタグを選択
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<ul id='list_a'> ... </ul>"
-      , @"<ul id='list_b'> ... </ul>"]), [self querySelectorAll:@"ul"], nil);
+      , @"<ul id='list_b'> ... </ul>"]), [self querySelectorAll:@"ul"]);
     
     // 空のタグを選択
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<meta data='AAA'/>"
       , @"<meta data='BBB'/>"
       , @"<div id='box_W'/>"
       , @"<div id='box_X'/>"
       , @"<div id='box_Y'/>"
-      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*:empty"], nil);
+      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*:empty"]);
     
     // 空欄のタグを選択(emptyはじゃまなので弾く)
-    STAssertEqualObjects
-    ((@[@"<a name='foot'>\t \r\n</a>"]), [self querySelectorAll:@"*:blank:not(*:empty)"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<a name='foot'>\t \r\n</a>"]), [self querySelectorAll:@"*:blank:not(*:empty)"]);
 
 }
 
@@ -79,49 +79,49 @@ static NSString *TEST_HTML =
 {
     
     // 親子関係
-    STAssertEqualObjects
-    ((@[@"<title>test</title>"]), [self querySelectorAll:@"head>title"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<title>test</title>"]), [self querySelectorAll:@"head>title"]);
     
-    STAssertEqualObjects
-    ((@[@"<head> ... </head>"]), [self querySelectorAll:@"!head>title"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<head> ... </head>"]), [self querySelectorAll:@"!head>title"]);
     
     // 祖先関係
-    STAssertEqualObjects
-    ((@[@"<title>test</title>"]), [self querySelectorAll:@"html title"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<title>test</title>"]), [self querySelectorAll:@"html title"]);
 
-    STAssertEqualObjects
-    ((@[@"<html> ... </html>"]), [self querySelectorAll:@"!html title"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<html> ... </html>"]), [self querySelectorAll:@"!html title"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<li for='a'>1</li>"
-      , @"<li for='c'>2</li>"]), [self querySelectorAll:@"ul#list_b li"], nil);
+      , @"<li for='c'>2</li>"]), [self querySelectorAll:@"ul#list_b li"]);
     
     // 兄弟関係
-    STAssertEqualObjects
-    ((@[@"<body> ... </body>"]), [self querySelectorAll:@"head+*"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<body> ... </body>"]), [self querySelectorAll:@"head+*"]);
     
-    STAssertEqualObjects
-    ((@[@"<head> ... </head>"]), [self querySelectorAll:@"!*+body"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<head> ... </head>"]), [self querySelectorAll:@"!*+body"]);
     
-    STAssertEqualObjects
-    ((@[@"<html> ... </html>"]), [self querySelectorAll:@"!html title"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<html> ... </html>"]), [self querySelectorAll:@"!html title"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<li id='b'>B</li>"
-      , @"<li id='c'>C</li>"]), [self querySelectorAll:@"ul#list_a>li~*"], nil);
+      , @"<li id='c'>C</li>"]), [self querySelectorAll:@"ul#list_a>li~*"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<li id='a'>A</li>"
-      , @"<li id='b'>B</li>"]), [self querySelectorAll:@"ul#list_a>!li~*"], nil);
+      , @"<li id='b'>B</li>"]), [self querySelectorAll:@"ul#list_a>!li~*"]);
     
     // 参照関係
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<li id='a'>A</li>"
-      , @"<li id='c'>C</li>"]), [self querySelectorAll:@"li /for/ li"], nil);
+      , @"<li id='c'>C</li>"]), [self querySelectorAll:@"li /for/ li"]);
 
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<li for='a'>1</li>"
-      , @"<li for='c'>2</li>"]), [self querySelectorAll:@"!li /for/ li"], nil);
+      , @"<li for='c'>2</li>"]), [self querySelectorAll:@"!li /for/ li"]);
 
 }
 
@@ -129,48 +129,48 @@ static NSString *TEST_HTML =
 {
     
     
-    STAssertEqualObjects
-    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(1)"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(1)"]);
     
-    STAssertEqualObjects
-    ((@[@"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3)"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3)"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<div id='box_W'/>"
-      , @"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(even)"], nil);
+      , @"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(even)"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<div id='box_X'/>"
-      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(odd)"], nil);
+      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(odd)"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<div id='box_W'/>"
-      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n)"], nil);
+      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n)"]);
     
-    STAssertEqualObjects
-    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n+1)"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n+1)"]);
     
-    STAssertEqualObjects
-    ((@[@"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n-1)"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n-1)"]);
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<div id='box_W'/>"
-      , @"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(-n+1)"], nil);
+      , @"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(-n+1)"]);
     
 }
 
 - (void)testComplexQueries
 {
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     ((@[@"<ul id='list_a'> ... </ul>"
-      , @"<ul id='list_b'> ... </ul>"]), [self querySelectorAll:@"!ul>li+li"], nil);
+      , @"<ul id='list_b'> ... </ul>"]), [self querySelectorAll:@"!ul>li+li"]);
     
-    STAssertEqualObjects
-    ((@[@"<ul id='list_a'> ... </ul>"]), [self querySelectorAll:@"!ul>li+li+li"], nil);
+    XCTAssertEqualObjects
+    ((@[@"<ul id='list_a'> ... </ul>"]), [self querySelectorAll:@"!ul>li+li+li"]);
     
-    STAssertEqualObjects
-    ((@[@"<div id='box_Z'/>"]), [self querySelectorAll:@"div>#box_X+*~*" ], nil);
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_Z'/>"]), [self querySelectorAll:@"div>#box_X+*~*" ]);
 
 }
 

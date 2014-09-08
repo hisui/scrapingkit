@@ -30,10 +30,11 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
                                           options:0 error:NULL];
 
 
-#define CALL_INITIALIZE(Id)                             \
-static __attribute__((unused)) auto Id##_init = [] () { \
-    [Id initialize];                                    \
-}
+#define AUTO_INITIALIZE(Id)                    \
+static volatile const auto Id##_init = [] () { \
+    [Id initialize];                           \
+    return 1;                                  \
+} ()
 
 @implementation SFCSSFilter
 - (BOOL)match:(SFElement*)elem
@@ -237,16 +238,12 @@ static __attribute__((unused)) auto Id##_init = [] () { \
 
 @end
 
-
+AUTO_INITIALIZE(SFNEquationFilter);
 @implementation SFNEquationFilter
 {
     enum EquationKind _kind;
     SFNEquation *_eq;
 }
-
-static __attribute__((unused)) auto SFNEquationFilter_init = [] () {
-    [SFNEquationFilter initialize];
-};
 
 + (void)initialize
 {
@@ -320,6 +317,7 @@ static __attribute__((unused)) auto SFNEquationFilter_init = [] () {
 @end
 
 
+AUTO_INITIALIZE(SFNotFilter);
 @implementation SFNotFilter
 {
     SFCSSFilter *_filter;
@@ -358,6 +356,7 @@ static __attribute__((unused)) auto SFNEquationFilter_init = [] () {
 @end
 
 
+AUTO_INITIALIZE(SFMatchesAnyFilter);
 @implementation SFMatchesAnyFilter
 {
     NSArray *_filters;
@@ -414,8 +413,8 @@ static __attribute__((unused)) auto SFNEquationFilter_init = [] () {
 @end
 
 
+AUTO_INITIALIZE(SFOnlyChildFilter);
 @implementation SFOnlyChildFilter
-CALL_INITIALIZE(SFOnlyChildFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -424,8 +423,8 @@ CALL_INITIALIZE(SFOnlyChildFilter);
 @end
 
 
+AUTO_INITIALIZE(SFOnlyOfTypeFilter);
 @implementation SFOnlyOfTypeFilter
-CALL_INITIALIZE(SFOnlyOfTypeFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -434,8 +433,8 @@ CALL_INITIALIZE(SFOnlyOfTypeFilter);
 @end
 
 
+AUTO_INITIALIZE(SFBaseFilter);
 @implementation SFBaseFilter
-CALL_INITIALIZE(SFBaseFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -444,8 +443,8 @@ CALL_INITIALIZE(SFBaseFilter);
 @end
 
 
+AUTO_INITIALIZE(SFRootFilter);
 @implementation SFRootFilter
-CALL_INITIALIZE(SFRootFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -454,8 +453,8 @@ CALL_INITIALIZE(SFRootFilter);
 @end
 
 
+AUTO_INITIALIZE(SFEmptyFilter);
 @implementation SFEmptyFilter
-CALL_INITIALIZE(SFEmptyFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -464,8 +463,8 @@ CALL_INITIALIZE(SFEmptyFilter);
 @end
 
 
+AUTO_INITIALIZE(SFBlankFilter);
 @implementation SFBlankFilter
-CALL_INITIALIZE(SFBlankFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -478,7 +477,7 @@ CALL_INITIALIZE(SFBlankFilter);
 }
 @end
 
-
+AUTO_INITIALIZE(SFNthMatchFilter);
 @implementation SFNthMatchFilter
 {
     BOOL _last;

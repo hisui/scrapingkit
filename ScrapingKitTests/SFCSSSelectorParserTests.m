@@ -9,140 +9,140 @@
 - (void)testParseTypeSelector
 {
 
-    STAssertEqualObjects
-    (@"<[a]>", [self dumpFileters:[[self newParser:@"a"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a]>", [self dumpFileters:[[self newParser:@"a"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[*]>", [self dumpFileters:[[self newParser:@"*"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[*]>", [self dumpFileters:[[self newParser:@"*"] parseSelector]]);
 
     // empty string
-    STAssertEqualObjects
-    (@"<>", [self dumpFileters:[[self newParser:@""] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<>", [self dumpFileters:[[self newParser:@""] parseSelector]]);
 
 }
 
 - (void)testParseIdAndClassFilter
 {
     
-    STAssertEqualObjects
-    (@"<[a][[class~='x']]>", [self dumpFileters:[[self newParser:@"a.x"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[class~='x']]>", [self dumpFileters:[[self newParser:@"a.x"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[[class~='x']]>", [self dumpFileters:[[self newParser:@".x"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[[class~='x']]>", [self dumpFileters:[[self newParser:@".x"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[id='x']]>", [self dumpFileters:[[self newParser:@"a#x"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[id='x']]>", [self dumpFileters:[[self newParser:@"a#x"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[[id='x']]>", [self dumpFileters:[[self newParser:@"#x"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[[id='x']]>", [self dumpFileters:[[self newParser:@"#x"] parseSelector]]);
     
 }
 
 - (void)testParseAttributeFilter
 {
     
-    STAssertEqualObjects
-    (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x=y]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x=y]"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[[x='y']]>", [self dumpFileters:[[self newParser:@"[x=y]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[[x='y']]>", [self dumpFileters:[[self newParser:@"[x=y]"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[x^='y']]>", [self dumpFileters:[[self newParser:@"a[x^=y]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x^='y']]>", [self dumpFileters:[[self newParser:@"a[x^=y]"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[x$='y']]>", [self dumpFileters:[[self newParser:@"a[x$=y]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x$='y']]>", [self dumpFileters:[[self newParser:@"a[x$=y]"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[x*='y']]>", [self dumpFileters:[[self newParser:@"a[x*=y]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x*='y']]>", [self dumpFileters:[[self newParser:@"a[x*=y]"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[x~='y']]>", [self dumpFileters:[[self newParser:@"a[x~=y]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x~='y']]>", [self dumpFileters:[[self newParser:@"a[x~=y]"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x='y']"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x='y']"] parseSelector]]);
     
-    STAssertEqualObjects
-    (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x=\"y\"]"] parseSelector]], nil);
+    XCTAssertEqualObjects
+    (@"<[a][[x='y']]>", [self dumpFileters:[[self newParser:@"a[x=\"y\"]"] parseSelector]]);
 
 }
 
 - (void)testParseNthXXXFilter
 {
     
-    STAssertEqualObjects
-    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-child(0n+3)]>", [self dumpFileters:[[self newParser:@":nth-child(3)"] parseFilter]]);
     
     // 残り分
     
-    STAssertEqualObjects
-    (@"<[:nth-last-child(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-last-child(1)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-last-child(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-last-child(1)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-of-type(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-of-type(1)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-of-type(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-of-type(1)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-last-of-type(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-last-of-type(1)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-last-of-type(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-last-of-type(1)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-child(0n+0)]>", [self dumpFileters:[[self newParser:@":first-child"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-child(0n+0)]>", [self dumpFileters:[[self newParser:@":first-child"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:nth-last-child(0n+0)]>", [self dumpFileters:[[self newParser:@":last-child"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:nth-last-child(0n+0)]>", [self dumpFileters:[[self newParser:@":last-child"] parseFilter]]);
 
 }
 
 - (void)testParseNotFilters
 {
     
-    STAssertEqualObjects
-    (@"<[:not(*:empty)]>", [self dumpFileters:[[self newParser:@":not(*:empty)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:not(*:empty)]>", [self dumpFileters:[[self newParser:@":not(*:empty)"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:not(:empty)]>", [self dumpFileters:[[self newParser:@":not(:empty)"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:not(:empty)]>", [self dumpFileters:[[self newParser:@":not(:empty)"] parseFilter]]);
 }
 
 - (void)testParseAllFilters
 {
     
-    STAssertEqualObjects
-    (@"<[:empty]>", [self dumpFileters:[[self newParser:@":empty"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:empty]>", [self dumpFileters:[[self newParser:@":empty"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:blank]>", [self dumpFileters:[[self newParser:@":blank"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:blank]>", [self dumpFileters:[[self newParser:@":blank"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:root]>", [self dumpFileters:[[self newParser:@":root"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:root]>", [self dumpFileters:[[self newParser:@":root"] parseFilter]]);
     
-    STAssertEqualObjects
-    (@"<[:base]>", [self dumpFileters:[[self newParser:@":base"] parseFilter]], nil);
+    XCTAssertEqualObjects
+    (@"<[:base]>", [self dumpFileters:[[self newParser:@":base"] parseFilter]]);
     
 }
 
 - (void)testParseCompoundSelector
 {
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     (@"<[a][[class~='x']][[id='y']][[a='b']][:nth-child(2n+1)]>"
-     , [self dumpFileters:[[self newParser:@"a.x#y[a=b]:nth-child(2n+1)"] parseSelector]], nil);
+     , [self dumpFileters:[[self newParser:@"a.x#y[a=b]:nth-child(2n+1)"] parseSelector]]);
 
 }
 
 - (void)testParseCombinator
 {
     
-    STAssertEqualObjects
+    XCTAssertEqualObjects
     (@"<[a][[class~='x']][[id='y']][[a='b']]>"
-     , [self dumpFileters:[[self newParser:@"a.x#y[a=b]"] parseSelector]], nil);
+     , [self dumpFileters:[[self newParser:@"a.x#y[a=b]"] parseSelector]]);
     
 }
 
