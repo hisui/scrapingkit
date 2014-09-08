@@ -27,7 +27,7 @@ static NSRegularExpression *const RX_SUBJECTOR =
                                           options:0 error:NULL];
 
 // ^SFCSSFilter*(SFSelectorParser*)
-static auto *const g_UserFilters = NSMutableDictionary.dictionary;
+static NSMutableDictionary *g_UserFilters = nil;
 
 @implementation SFCSSSelectorParser
 {
@@ -39,6 +39,9 @@ static auto *const g_UserFilters = NSMutableDictionary.dictionary;
 {
     // NSLog(@"SFSelectorParser.addFilter: name=%@", name);
     // てけとー<(^_^;)
+    if (g_UserFilters == nil) {
+        g_UserFilters = NSMutableDictionary.dictionary;
+    }
     g_UserFilters[name] = parsec;
 }
 
