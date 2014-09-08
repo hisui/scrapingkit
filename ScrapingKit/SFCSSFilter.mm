@@ -30,6 +30,11 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
                                           options:0 error:NULL];
 
 
+#define CALL_INITIALIZE(Id)                             \
+static __attribute__((unused)) auto Id##_init = [] () { \
+    [Id initialize];                                    \
+}
+
 @implementation SFCSSFilter
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
@@ -239,6 +244,10 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
     SFNEquation *_eq;
 }
 
+static __attribute__((unused)) auto SFNEquationFilter_init = [] () {
+    [SFNEquationFilter initialize];
+};
+
 + (void)initialize
 {
 
@@ -406,6 +415,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 
 @implementation SFOnlyChildFilter
+CALL_INITIALIZE(SFOnlyChildFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -415,6 +425,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 
 @implementation SFOnlyOfTypeFilter
+CALL_INITIALIZE(SFOnlyOfTypeFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -424,6 +435,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 
 @implementation SFBaseFilter
+CALL_INITIALIZE(SFBaseFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -433,6 +445,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 
 @implementation SFRootFilter
+CALL_INITIALIZE(SFRootFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -442,6 +455,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 
 @implementation SFEmptyFilter
+CALL_INITIALIZE(SFEmptyFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
@@ -451,6 +465,7 @@ static NSRegularExpression *const RX_COMMA_SEPARATOR =
 
 
 @implementation SFBlankFilter
+CALL_INITIALIZE(SFBlankFilter);
 - (BOOL)match:(SFElement*)elem
       context:(SFElement*)context
 {
