@@ -1,8 +1,11 @@
 //  Copyright (c) 2013 segfault.jp. All rights reserved.
 
-#import "SFCSSSelectorParserTests.h"
+#import <XCTest/XCTest.h>
 #import "SFCSSSelectorParser+Test.h"
 #import "SFCSSFilter.h"
+
+@interface SFCSSSelectorParserTests : XCTestCase
+@end
 
 @implementation SFCSSSelectorParserTests
 

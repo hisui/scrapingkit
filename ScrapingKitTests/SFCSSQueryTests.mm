@@ -1,6 +1,6 @@
 //  Copyright (c) 2013 segfault.jp. All rights reserved.
 
-#import "SFCSSQueryTests.h"
+#import <XCTest/XCTest.h>
 #import "SFCSSQuery+Local.h"
 #import "SFDocument+Local.h"
 
@@ -33,6 +33,9 @@ static NSString *TEST_HTML =
  "    <a name='foot'>\t \r\n</a>"
  "  </body>"
  "</html>";
+
+@interface SFCSSQueryTests : XCTestCase
+@end
 
 @implementation SFCSSQueryTests
 {

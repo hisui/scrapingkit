@@ -1,6 +1,6 @@
 template <size_t N, typename InputIterator> bool is_prefix_of(const char (&src)[N], InputIterator pos, InputIterator end)
 {
-  for (int i = 0; i < N; ++i) {
+  for (int i = 0; i < N-1; ++i) {
     if (pos == end || *pos++ != src[i]) return false;
   }
   return true;

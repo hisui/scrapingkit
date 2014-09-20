@@ -1,6 +1,6 @@
 //  Copyright (c) 2013 segfault.jp. All rights reserved.
 
-#import "ScrapingKitTests.h"
+#import <XCTest/XCTest.h>
 #import "SFDocument.h"
 #import "SFNodeList+Dot.h"
 
@@ -34,20 +34,14 @@ static NSString *SAMPLE_HTML = @
 "  </body>"
 "</html>";
 
+@interface ScrapingKitTests : XCTestCase
+@end
+
 @implementation ScrapingKitTests
-
-- (void)setUp
-{
-    [super setUp];
-}
-
-- (void)tearDown
-{
-    [super tearDown];
-}
 
 - (void)testSampleCode
 {
+    /*
     NSLog(@"-------------------------");
     auto all = [SFNodeList nodeListWithHTML:SAMPLE_HTML];
     all.find(@"ul")
@@ -58,6 +52,7 @@ static NSString *SAMPLE_HTML = @
         NSLog(@"elem:%@", e);
     });
     NSLog(@"-------------------------");
+    */
 }
 
 @end

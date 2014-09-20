@@ -10,29 +10,29 @@
 	<string>ScrapingKit</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>7CD34F75-E7FA-45DC-A2D9-B989697DE3C8</key>
+		<key>683E6DD9C014A7415C2A9A041F0B949529153FAA</key>
 		<string>https://github.com/hisui/scrapingkit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ScrapingKit.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>7CD34F75-E7FA-45DC-A2D9-B989697DE3C8</key>
+		<key>683E6DD9C014A7415C2A9A041F0B949529153FAA</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/hisui/scrapingkit.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>7CD34F75-E7FA-45DC-A2D9-B989697DE3C8</string>
+	<string>683E6DD9C014A7415C2A9A041F0B949529153FAA</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>7CD34F75-E7FA-45DC-A2D9-B989697DE3C8</string>
+			<string>683E6DD9C014A7415C2A9A041F0B949529153FAA</string>
 			<key>IDESourceControlWCCName</key>
 			<string>ScrapingKit</string>
 		</dict>

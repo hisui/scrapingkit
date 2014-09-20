@@ -24,6 +24,7 @@
 		245B0C07175A578A00B946AD /* SFCSSSelectorParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C06175A578A00B946AD /* SFCSSSelectorParserTests.m */; };
 		245B0C0E175AD24700B946AD /* SFCSSQueryTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C0D175AD24700B946AD /* SFCSSQueryTests.mm */; };
 		245B0C1A175AFC5700B946AD /* SFNodeSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C19175AFC5700B946AD /* SFNodeSelection.m */; };
+		2465853D19CDAD7F0014C19A /* SFDocumentTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2465853C19CDAD7F0014C19A /* SFDocumentTests.mm */; };
 		24EF1F5C175B431000EA64B1 /* SFNodeList+Dot.m in Sources */ = {isa = PBXBuildFile; fileRef = 24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +54,9 @@
 		245B0B2E1754975F00B946AD /* libScrapingKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScrapingKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		245B0B311754975F00B946AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		245B0B351754975F00B946AD /* ScrapingKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrapingKit-Prefix.pch"; sourceTree = "<group>"; };
-		245B0B3F1754975F00B946AD /* ScrapingKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScrapingKitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		245B0B3F1754975F00B946AD /* ScrapingKitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ScrapingKitTests.octest; path = ScrapingKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		245B0B4A1754975F00B946AD /* ScrapingKitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScrapingKitTests-Info.plist"; sourceTree = "<group>"; };
 		245B0B4C1754975F00B946AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		245B0B4E1754975F00B946AD /* ScrapingKitTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScrapingKitTests.h; sourceTree = "<group>"; };
 		245B0B4F1754975F00B946AD /* ScrapingKitTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ScrapingKitTests.mm; sourceTree = "<group>"; };
 		245B0B591754CFC400B946AD /* ScrapingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ScrapingKit-Prefix.pch"; sourceTree = "<group>"; };
 		245B0B5C1754CFC400B946AD /* SFCSSFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSFilter.h; sourceTree = "<group>"; };
@@ -83,15 +83,14 @@
 		245B0C001756306900B946AD /* entities.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = entities.hpp; sourceTree = "<group>"; };
 		245B0C01175A2A8300B946AD /* SFNodeList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNodeList.h; sourceTree = "<group>"; };
 		245B0C02175A2A8400B946AD /* SFNodeList.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFNodeList.mm; sourceTree = "<group>"; };
-		245B0C05175A578A00B946AD /* SFCSSSelectorParserTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSSelectorParserTests.h; sourceTree = "<group>"; };
 		245B0C06175A578A00B946AD /* SFCSSSelectorParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFCSSSelectorParserTests.m; sourceTree = "<group>"; };
 		245B0C08175A612800B946AD /* SFCSSSelectorParser+Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFCSSSelectorParser+Test.h"; sourceTree = "<group>"; };
-		245B0C0C175AD24700B946AD /* SFCSSQueryTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFCSSQueryTests.h; sourceTree = "<group>"; };
 		245B0C0D175AD24700B946AD /* SFCSSQueryTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFCSSQueryTests.mm; sourceTree = "<group>"; };
 		245B0C18175AFC5700B946AD /* SFNodeSelection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNodeSelection.h; sourceTree = "<group>"; };
 		245B0C19175AFC5700B946AD /* SFNodeSelection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNodeSelection.m; sourceTree = "<group>"; };
 		245B0C1C175B2D0200B946AD /* SFNodeSelection+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeSelection+Local.h"; sourceTree = "<group>"; };
 		245B0C20175B3BC800B946AD /* SFNodeList+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Local.h"; sourceTree = "<group>"; };
+		2465853C19CDAD7F0014C19A /* SFDocumentTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFDocumentTests.mm; sourceTree = "<group>"; };
 		24E8B58E190D82B700191BC0 /* codes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = codes.hpp; sourceTree = "<group>"; };
 		24EF1F5A175B431000EA64B1 /* SFNodeList+Dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Dot.h"; sourceTree = "<group>"; };
 		24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFNodeList+Dot.m"; sourceTree = "<group>"; };
@@ -173,12 +172,10 @@
 			isa = PBXGroup;
 			children = (
 				245B0B491754975F00B946AD /* Supporting Files */,
-				245B0B4E1754975F00B946AD /* ScrapingKitTests.h */,
 				245B0B4F1754975F00B946AD /* ScrapingKitTests.mm */,
-				245B0C05175A578A00B946AD /* SFCSSSelectorParserTests.h */,
 				245B0C06175A578A00B946AD /* SFCSSSelectorParserTests.m */,
-				245B0C0C175AD24700B946AD /* SFCSSQueryTests.h */,
 				245B0C0D175AD24700B946AD /* SFCSSQueryTests.mm */,
+				2465853C19CDAD7F0014C19A /* SFDocumentTests.mm */,
 			);
 			path = ScrapingKitTests;
 			sourceTree = "<group>";
@@ -379,6 +376,7 @@
 				245B0B501754975F00B946AD /* ScrapingKitTests.mm in Sources */,
 				245B0C07175A578A00B946AD /* SFCSSSelectorParserTests.m in Sources */,
 				245B0C0E175AD24700B946AD /* SFCSSQueryTests.mm in Sources */,
+				2465853D19CDAD7F0014C19A /* SFDocumentTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
