@@ -15,7 +15,6 @@
     auto html = root.firstElement;
     XCTAssertEqualObjects(@"html", html.name);
 
-    NSLog(@"%@", html.text);
     auto data = [html.text dataUsingEncoding:NSUTF16StringEncoding];
     XCTAssertEqual(4, data.length); // + BOM
     XCTAssertEqual(0xfeff, ((uint16_t*)data.bytes)[0]);

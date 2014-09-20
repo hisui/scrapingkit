@@ -30,7 +30,7 @@ static NSString *stringify(const HTMLParser::pair_t &pair)
     std::transform(dest.begin(), dest.end(), dest.begin(), CFSwapInt32HostToBig);
     return [NSString.alloc initWithBytes:&dest[0]
                                   length:dest.size() * 4
-                                encoding:NSUTF32StringEncoding];
+                                encoding:NSUTF32BigEndianStringEncoding];
 }
 
 static void parseHTML(SFElement *root, const char *pos, const char *end)
