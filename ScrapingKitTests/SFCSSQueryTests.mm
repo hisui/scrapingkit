@@ -128,6 +128,15 @@ static NSString *TEST_HTML =
 
 }
 
+- (void)testFirstAndLastChild
+{
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_W'/>"]), [self querySelectorAll:@"*#footer>div:first-child"]);
+    
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:last-child"]);
+}
+
 - (void)testNthChild
 {
 

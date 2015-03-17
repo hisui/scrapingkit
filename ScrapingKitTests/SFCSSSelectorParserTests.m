@@ -97,10 +97,10 @@
     (@"<[:nth-last-of-type(0n+1)]>", [self dumpFileters:[[self newParser:@":nth-last-of-type(1)"] parseFilter]]);
     
     XCTAssertEqualObjects
-    (@"<[:nth-child(0n+0)]>", [self dumpFileters:[[self newParser:@":first-child"] parseFilter]]);
+    (@"<[:nth-child(0n+1)]>", [self dumpFileters:[[self newParser:@":first-child"] parseFilter]]);
     
     XCTAssertEqualObjects
-    (@"<[:nth-last-child(0n+0)]>", [self dumpFileters:[[self newParser:@":last-child"] parseFilter]]);
+    (@"<[:nth-last-child(0n+1)]>", [self dumpFileters:[[self newParser:@":last-child"] parseFilter]]);
 
 }
 

@@ -268,12 +268,12 @@ AUTO_INITIALIZE(SFNEquationFilter);
     [SFCSSSelectorParser addFilter:@"first-child"
                               with:^(id)
      { return [self.alloc initWithKind:NTH_CHILD
-                              equation:[SFNEquation.alloc initWithScale:0 base:0]]; }];
+                              equation:[SFNEquation.alloc initWithScale:0 base:1]]; }];
     
     [SFCSSSelectorParser addFilter:@"last-child"
                               with:^(id)
      { return [self.alloc initWithKind:NTH_CHILD_REV
-                              equation:[SFNEquation.alloc initWithScale:0 base:0]]; }];
+                              equation:[SFNEquation.alloc initWithScale:0 base:1]]; }];
 
 }
 
