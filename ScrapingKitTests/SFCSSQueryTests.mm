@@ -130,35 +130,34 @@ static NSString *TEST_HTML =
 
 - (void)testNthChild
 {
-    
+
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_W'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(1)"]);
     
     XCTAssertEqualObjects
-    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(1)"]);
-    
-    XCTAssertEqualObjects
-    ((@[@"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3)"]);
-    
-    XCTAssertEqualObjects
-    ((@[@"<div id='box_W'/>"
-      , @"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(even)"]);
+    ((@[@"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3)"]);
     
     XCTAssertEqualObjects
     ((@[@"<div id='box_X'/>"
-      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(odd)"]);
+      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(even)"]);
     
     XCTAssertEqualObjects
     ((@[@"<div id='box_W'/>"
-      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n)"]);
+      , @"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(odd)"]);
     
     XCTAssertEqualObjects
-    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n+1)"]);
+    ((@[@"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n)"]);
     
     XCTAssertEqualObjects
-    ((@[@"<div id='box_Y'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n-1)"]);
+    ((@[@"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n-1)"]);
     
     XCTAssertEqualObjects
     ((@[@"<div id='box_W'/>"
-      , @"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(-n+1)"]);
+      , @"<div id='box_Z'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(3n+1)"]);
+    
+    XCTAssertEqualObjects
+    ((@[@"<div id='box_W'/>"
+      , @"<div id='box_X'/>"]), [self querySelectorAll:@"*#footer>div:nth-child(-n+2)"]);
     
 }
 

@@ -14,7 +14,7 @@
 		<string>https://github.com/hisui/scrapingkit.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>ScrapingKit.xcodeproj/project.xcworkspace</string>
+	<string>ScrapingKit.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>683E6DD9C014A7415C2A9A041F0B949529153FAA</key>

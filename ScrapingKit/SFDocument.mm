@@ -33,6 +33,38 @@ static NSString *stringify(const HTMLParser::pair_t &pair)
                                 encoding:NSUTF32BigEndianStringEncoding];
 }
 
+static bool isListElement(NSString *name)
+{
+    static NSString * tags[] = {@"dt", @"dd", @"li"};
+    for (auto e: tags) {
+        if ([e isEqual:name]) return true;
+    }
+    return false;
+}
+
+static void closeElement(NSString *name, std::deque<SFElement*> &stack)
+{
+    for (int i = int(stack.size()) - 1; i >= 0; --i) {
+        auto elem = stack[i];
+        if ([elem.name isEqualToString:name]) {
+            for (int j = i + 1; j < stack.size(); ++j) {
+                auto e = stack[j];
+                if (isListElement(e.name)) {
+                    elem = e;
+                    continue;
+                }
+                for (auto next = e.first; next; ) {
+                    auto node = next;
+                    next = next.next;
+                    [elem insert:node before:nil];
+                }
+            }
+            stack.erase(stack.begin() + i, stack.end());
+            break;
+        }
+    }
+}
+
 static void parseHTML(SFElement *root, const char *pos, const char *end)
 {
     std::deque<SFElement*> stack;
@@ -56,6 +88,11 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
                         : stringify(val);
                 }
                 auto node = [SFElement.alloc initWithName:stringify(pair).lowercaseString attrs:map];
+                if (isListElement(node.name)) {
+                    closeElement(@"dt", stack);
+                    closeElement(@"dd", stack);
+                    closeElement(@"li", stack);
+                }
                 [stack.back() append:node];
                 switch (parser.leave_elem()) {
                 case sf::ELEM_ERROR:
@@ -67,24 +104,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
             }
             break;
         case sf::ELEM_CLOSE:
-            {
-                auto name = stringify(pair).lowercaseString;
-                for (int i = int(stack.size()) - 1; i >= 0; --i) {
-                    auto elem = stack[i];
-                    if ([elem.name isEqualToString:name]) {
-                        for (int j = i + 1; j < stack.size(); ++j) {
-                            auto e = stack[j];
-                            for (auto next = e.first; next; ) {
-                                 auto node = next;
-                                next = next.next;
-                                [elem insert:node before:nil];
-                            }
-                        }
-                        stack.erase(stack.begin() + i, stack.end());
-                        break;
-                    }
-                }
-            }
+            closeElement(stringify(pair).lowercaseString, stack);
             break;
         }
     }

@@ -195,7 +195,7 @@ static volatile const auto Id##_init = [] () { \
     int _base;
 }
 
-+ (SFNEquation*)parse:(SFCSSSelectorParser*)parser
++ (instancetype)parse:(SFCSSSelectorParser*)parser
 {
     if ([parser scan:RX_EQ_EVEN]) return [self.alloc initWithScale:2 base:0];
     if ([parser scan:RX_EQ_ODD ]) return [self.alloc initWithScale:2 base:1];
@@ -222,6 +222,7 @@ static volatile const auto Id##_init = [] () { \
 
 - (BOOL)test:(int)n
 {
+    ++ n;
     int min = _scale >= 0 ? _base: INT_MIN;
     int max = _scale <= 0 ? _base: INT_MAX;
     if (!(min <= n && n <= max)) {
@@ -278,7 +279,7 @@ AUTO_INITIALIZE(SFNEquationFilter);
 
 + (SFNEquationFilter*)parse:(SFCSSSelectorParser*)parser kind:(enum EquationKind)kind
 {
-    SFNEquation *eq = [SFNEquation parse:parser];
+    auto eq = [SFNEquation parse:parser];
     if (!eq) {
         [parser raiseError:[NSString stringWithFormat:
                 @"nth-* must be followed by valid expression."]];
