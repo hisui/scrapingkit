@@ -114,7 +114,7 @@ static void closeOptionalTags(NSString *name, std::deque<SFElement*> &stack)
         case TAG_dd:
         case TAG_dt:
             if (top == TAG_dd ||
-                top == TAG_dd) goto close;
+                top == TAG_dt) goto close;
             break;
         case TAG_optgroup:
             if (top == TAG_optgroup ||
