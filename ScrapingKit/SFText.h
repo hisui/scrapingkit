@@ -2,8 +2,14 @@
 
 #import "SFNode.h"
 
-extern NSString *SFTextEncode(NSString *src);
-extern NSString *SFTextDecode(NSString *src);
+#ifdef __cplusplus
+extern "C" {
+#endif
+    extern NSString *SFTextEncode(NSString *src);
+    extern NSString *SFTextDecode(NSString *src);
+#ifdef __cplusplus
+}
+#endif
 
 /**
  * Text node.

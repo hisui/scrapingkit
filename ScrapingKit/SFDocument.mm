@@ -4,12 +4,57 @@
 #import "SFElement.h"
 #include <deque>
 #include <vector>
+#include <unordered_set>
 #include "htmlparse.hpp"
 #include "entities.hpp"
+#include "tags.hpp"
 
 typedef sf::basic_htmlparser<const char*> HTMLParser;
 
 using std::get;
+
+namespace std {
+    template<> struct equal_to<NSString*>
+    {
+        bool operator()(NSString *lhs, NSString *rhs) const
+        {
+            return [lhs isEqual:rhs];
+        }
+    };
+    
+    template<> struct hash<NSString*>
+    {
+        size_t operator()(NSString *o) const
+        {
+            return size_t(o.hash);
+        }
+    };
+}
+
+/*
+static std::unordered_set<NSString*> kVoidElements =
+{
+      @"area"
+    , @"base"
+    , @"br"
+    , @"col"
+    , @"embed"
+    , @"hr"
+    , @"img"
+    , @"input"
+    , @"keygen"
+    , @"link"
+    , @"meta"
+    , @"param"
+    , @"source"
+    , @"track"
+    , @"wbr"
+};
+*/
+
+inline sf::Tag toTag(NSString *o) {
+    return sf::ascii_to_Tag(o.UTF8String, o.length);
+}
 
 static NSString *stringify(const HTMLParser::pair_t &pair)
 {
@@ -33,42 +78,96 @@ static NSString *stringify(const HTMLParser::pair_t &pair)
                                 encoding:NSUTF32BigEndianStringEncoding];
 }
 
-static bool isListElement(NSString *name)
-{
-    static NSString * tags[] = {@"dt", @"dd", @"li"};
-    for (auto e: tags) {
-        if ([e isEqual:name]) return true;
-    }
-    return false;
-}
-
 static void closeElement(NSString *name, std::deque<SFElement*> &stack)
 {
     for (int i = int(stack.size()) - 1; i >= 0; --i) {
         auto elem = stack[i];
-        if ([elem.name isEqualToString:name]) {
+        if ([elem.name isEqual:name]) {
+            /*
             for (int j = i + 1; j < stack.size(); ++j) {
                 auto e = stack[j];
-                if (isListElement(e.name)) {
-                    elem = e;
-                    continue;
-                }
                 for (auto next = e.first; next; ) {
                     auto node = next;
                     next = next.next;
                     [elem insert:node before:nil];
                 }
             }
+            */
             stack.erase(stack.begin() + i, stack.end());
             break;
         }
     }
 }
 
+// http://www.w3.org/TR/html5/syntax.html#optional-tags
+static void closeOptionalTags(NSString *name, std::deque<SFElement*> &stack)
+{
+    using namespace sf;
+    if (stack.empty()) {
+        return;
+    }
+    auto top = toTag(stack.back().name);
+    switch (toTag(name)) {
+        case TAG_li:
+            if (top == TAG_li) goto close;
+            break;
+        case TAG_dd:
+        case TAG_dt:
+            if (top == TAG_dd ||
+                top == TAG_dd) goto close;
+            break;
+        case TAG_optgroup:
+            if (top == TAG_optgroup ||
+                top == TAG_option) goto close;
+            break;
+        case TAG_option:
+            if (top == TAG_option) goto close;
+            break;
+        case TAG_tbody:
+        case TAG_tfoot:
+            if (top == TAG_thead ||
+                top == TAG_tbody ||
+                top == TAG_tfoot) goto close;
+        case TAG_tr:
+            if (top == TAG_tr) goto close;
+            break;
+        case TAG_th:
+        case TAG_td:
+            if (top == TAG_th ||
+                top == TAG_td) goto close;
+            break;
+            
+        default:
+            break;
+    }
+    return;
+close:
+    stack.pop_back();
+}
+
+static bool isVoidElement(NSString *name)
+{
+    using namespace sf;
+    switch (toTag(name)) {
+        case TAG_area:
+        case TAG_base:
+        case TAG_br:
+        case TAG_col:
+        case TAG_hr:
+        case TAG_img:
+        case TAG_input:
+        case TAG_link:
+        case TAG_meta:
+        case TAG_param:
+            return true;
+        default:
+            return false;
+    }
+}
+
 static void parseHTML(SFElement *root, const char *pos, const char *end)
 {
-    std::deque<SFElement*> stack;
-    stack.push_back(root);
+    std::deque<SFElement*> stack = { root };
     HTMLParser::pair_t pair;
     HTMLParser parser(pos, end);
     while (auto type = parser.enter_elem(pair)) {
@@ -88,12 +187,11 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
                         : stringify(val);
                 }
                 auto node = [SFElement.alloc initWithName:stringify(pair).lowercaseString attrs:map];
-                if (isListElement(node.name)) {
-                    closeElement(@"dt", stack);
-                    closeElement(@"dd", stack);
-                    closeElement(@"li", stack);
-                }
+                closeOptionalTags(node.name, stack);
                 [stack.back() append:node];
+                if (isVoidElement(node.name)) {
+                    break;
+                }
                 switch (parser.leave_elem()) {
                 case sf::ELEM_ERROR:
                 case sf::ELEM_CLOSE:
@@ -108,6 +206,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
             break;
         }
     }
+    /*
     for (int i = 1; i < stack.size(); ++i) {
         for (auto next = stack[i].first; next; ) {
             auto node = next;
@@ -115,6 +214,7 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
             [root insert:node before:nil];
         }
     }
+    */
 }
 
 @implementation SFDocument

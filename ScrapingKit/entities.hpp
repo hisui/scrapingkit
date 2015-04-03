@@ -8,7 +8,7 @@
 
 namespace sf {
     namespace detail {
-        #include "./codes.hpp"
+        #include "./entities.cpp"
     }
 
     template<typename InputIterator>
