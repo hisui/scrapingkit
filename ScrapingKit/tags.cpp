@@ -10,78 +10,78 @@ template <size_t N, typename InputIterator> bool is_prefix_of(const char (&src)[
 }
 
 namespace sf {
-    
+
 template <typename InputIterator>
 Tag ascii_to_Tag(InputIterator pos, InputIterator end)
 {
     if (pos == end) return Tag_0;
     switch (*pos++) {
         case 'a':
-            return pos == end ? TAG_a: Tag_0;
+            if (pos == end) return TAG_a;
             switch (*pos++) {
                 case 'b':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("br", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_abbr: Tag_0;
+                    if (pos == end) return TAG_abbr;
                 case 'c':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ronym", pos, end)) return Tag_0;
                     std::advance(pos, 5);
-                    return pos == end ? TAG_acronym: Tag_0;
+                    if (pos == end) return TAG_acronym;
                 case 'd':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("dress", pos, end)) return Tag_0;
                     std::advance(pos, 5);
-                    return pos == end ? TAG_address: Tag_0;
+                    if (pos == end) return TAG_address;
                 case 'p':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("plet", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_applet: Tag_0;
+                    if (pos == end) return TAG_applet;
                 case 'r':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ea", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_area: Tag_0;
+                    if (pos == end) return TAG_area;
             }
             return Tag_0;
         case 'b':
-            return pos == end ? TAG_b: Tag_0;
+            if (pos == end) return TAG_b;
             switch (*pos++) {
                 case 'a':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("se", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_base: Tag_0;
+                    if (pos == end) return TAG_base;
                     if (!is_prefix_of("font", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_basefont: Tag_0;
+                    if (pos == end) return TAG_basefont;
                 case 'd':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'o') return Tag_0;
-                    return pos == end ? TAG_bdo: Tag_0;
+                    if (pos == end) return TAG_bdo;
                 case 'i':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'g') return Tag_0;
-                    return pos == end ? TAG_big: Tag_0;
+                    if (pos == end) return TAG_big;
                 case 'l':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ockquote", pos, end)) return Tag_0;
                     std::advance(pos, 8);
-                    return pos == end ? TAG_blockquote: Tag_0;
+                    if (pos == end) return TAG_blockquote;
                 case 'o':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("dy", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_body: Tag_0;
+                    if (pos == end) return TAG_body;
                 case 'r':
-                    return pos == end ? TAG_br: Tag_0;
+                    if (pos == end) return TAG_br;
                 case 'u':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("tton", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_button: Tag_0;
+                    if (pos == end) return TAG_button;
             }
             return Tag_0;
         case 'c':
@@ -91,29 +91,29 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ption", pos, end)) return Tag_0;
                     std::advance(pos, 5);
-                    return pos == end ? TAG_caption: Tag_0;
+                    if (pos == end) return TAG_caption;
                 case 'e':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("nter", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_center: Tag_0;
+                    if (pos == end) return TAG_center;
                 case 'i':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("te", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_cite: Tag_0;
+                    if (pos == end) return TAG_cite;
                 case 'o':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
                         case 'd':
                             if (pos == end) return Tag_0;
                             if (*pos++ != 'e') return Tag_0;
-                            return pos == end ? TAG_code: Tag_0;
+                            if (pos == end) return TAG_code;
                         case 'l':
-                            return pos == end ? TAG_col: Tag_0;
+                            if (pos == end) return TAG_col;
                             if (!is_prefix_of("group", pos, end)) return Tag_0;
                             std::advance(pos, 5);
-                            return pos == end ? TAG_colgroup: Tag_0;
+                            if (pos == end) return TAG_colgroup;
                     }
                     return Tag_0;
             }
@@ -122,34 +122,34 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
             if (pos == end) return Tag_0;
             switch (*pos++) {
                 case 'd':
-                    return pos == end ? TAG_dd: Tag_0;
+                    if (pos == end) return TAG_dd;
                 case 'e':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'l') return Tag_0;
-                    return pos == end ? TAG_del: Tag_0;
+                    if (pos == end) return TAG_del;
                 case 'f':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'n') return Tag_0;
-                    return pos == end ? TAG_dfn: Tag_0;
+                    if (pos == end) return TAG_dfn;
                 case 'i':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
                         case 'r':
-                            return pos == end ? TAG_dir: Tag_0;
+                            if (pos == end) return TAG_dir;
                         case 'v':
-                            return pos == end ? TAG_div: Tag_0;
+                            if (pos == end) return TAG_div;
                     }
                     return Tag_0;
                 case 'l':
-                    return pos == end ? TAG_dl: Tag_0;
+                    if (pos == end) return TAG_dl;
                 case 't':
-                    return pos == end ? TAG_dt: Tag_0;
+                    if (pos == end) return TAG_dt;
             }
             return Tag_0;
         case 'e':
             if (pos == end) return Tag_0;
             if (*pos++ != 'm') return Tag_0;
-            return pos == end ? TAG_em: Tag_0;
+            if (pos == end) return TAG_em;
         case 'f':
             if (pos == end) return Tag_0;
             switch (*pos++) {
@@ -157,71 +157,71 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("eldset", pos, end)) return Tag_0;
                     std::advance(pos, 6);
-                    return pos == end ? TAG_fieldset: Tag_0;
+                    if (pos == end) return TAG_fieldset;
                 case 'o':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
                         case 'n':
                             if (pos == end) return Tag_0;
                             if (*pos++ != 't') return Tag_0;
-                            return pos == end ? TAG_font: Tag_0;
+                            if (pos == end) return TAG_font;
                         case 'r':
                             if (pos == end) return Tag_0;
                             if (*pos++ != 'm') return Tag_0;
-                            return pos == end ? TAG_form: Tag_0;
+                            if (pos == end) return TAG_form;
                     }
                     return Tag_0;
                 case 'r':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ame", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_frame: Tag_0;
+                    if (pos == end) return TAG_frame;
                     if (!is_prefix_of("set", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_frameset: Tag_0;
+                    if (pos == end) return TAG_frameset;
             }
             return Tag_0;
         case 'h':
             if (pos == end) return Tag_0;
             switch (*pos++) {
                 case '1':
-                    return pos == end ? TAG_h1: Tag_0;
+                    if (pos == end) return TAG_h1;
                 case '2':
-                    return pos == end ? TAG_h2: Tag_0;
+                    if (pos == end) return TAG_h2;
                 case '3':
-                    return pos == end ? TAG_h3: Tag_0;
+                    if (pos == end) return TAG_h3;
                 case '4':
-                    return pos == end ? TAG_h4: Tag_0;
+                    if (pos == end) return TAG_h4;
                 case '5':
-                    return pos == end ? TAG_h5: Tag_0;
+                    if (pos == end) return TAG_h5;
                 case '6':
-                    return pos == end ? TAG_h6: Tag_0;
+                    if (pos == end) return TAG_h6;
                 case 'e':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ad", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_head: Tag_0;
+                    if (pos == end) return TAG_head;
                 case 'r':
-                    return pos == end ? TAG_hr: Tag_0;
+                    if (pos == end) return TAG_hr;
                 case 't':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ml", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_html: Tag_0;
+                    if (pos == end) return TAG_html;
             }
             return Tag_0;
         case 'i':
-            return pos == end ? TAG_i: Tag_0;
+            if (pos == end) return TAG_i;
             switch (*pos++) {
                 case 'f':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("rame", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_iframe: Tag_0;
+                    if (pos == end) return TAG_iframe;
                 case 'm':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'g') return Tag_0;
-                    return pos == end ? TAG_img: Tag_0;
+                    if (pos == end) return TAG_img;
                 case 'n':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
@@ -229,23 +229,23 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                             if (pos == end) return Tag_0;
                             if (!is_prefix_of("ut", pos, end)) return Tag_0;
                             std::advance(pos, 2);
-                            return pos == end ? TAG_input: Tag_0;
+                            if (pos == end) return TAG_input;
                         case 's':
-                            return pos == end ? TAG_ins: Tag_0;
+                            if (pos == end) return TAG_ins;
                     }
                     return Tag_0;
                 case 's':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("index", pos, end)) return Tag_0;
                     std::advance(pos, 5);
-                    return pos == end ? TAG_isindex: Tag_0;
+                    if (pos == end) return TAG_isindex;
             }
             return Tag_0;
         case 'k':
             if (pos == end) return Tag_0;
             if (!is_prefix_of("bd", pos, end)) return Tag_0;
             std::advance(pos, 2);
-            return pos == end ? TAG_kbd: Tag_0;
+            if (pos == end) return TAG_kbd;
         case 'l':
             if (pos == end) return Tag_0;
             switch (*pos++) {
@@ -253,17 +253,17 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("bel", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_label: Tag_0;
+                    if (pos == end) return TAG_label;
                 case 'e':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("gend", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_legend: Tag_0;
+                    if (pos == end) return TAG_legend;
                 case 'i':
-                    return pos == end ? TAG_li: Tag_0;
+                    if (pos == end) return TAG_li;
                     if (!is_prefix_of("nk", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_link: Tag_0;
+                    if (pos == end) return TAG_link;
             }
             return Tag_0;
         case 'm':
@@ -272,18 +272,18 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                 case 'a':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'p') return Tag_0;
-                    return pos == end ? TAG_map: Tag_0;
+                    if (pos == end) return TAG_map;
                 case 'e':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
                         case 'n':
                             if (pos == end) return Tag_0;
                             if (*pos++ != 'u') return Tag_0;
-                            return pos == end ? TAG_menu: Tag_0;
+                            if (pos == end) return TAG_menu;
                         case 't':
                             if (pos == end) return Tag_0;
                             if (*pos++ != 'a') return Tag_0;
-                            return pos == end ? TAG_meta: Tag_0;
+                            if (pos == end) return TAG_meta;
                     }
                     return Tag_0;
             }
@@ -297,12 +297,12 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("rames", pos, end)) return Tag_0;
                     std::advance(pos, 5);
-                    return pos == end ? TAG_noframes: Tag_0;
+                    if (pos == end) return TAG_noframes;
                 case 's':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("cript", pos, end)) return Tag_0;
                     std::advance(pos, 5);
-                    return pos == end ? TAG_noscript: Tag_0;
+                    if (pos == end) return TAG_noscript;
             }
             return Tag_0;
         case 'o':
@@ -312,9 +312,9 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ject", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_object: Tag_0;
+                    if (pos == end) return TAG_object;
                 case 'l':
-                    return pos == end ? TAG_ol: Tag_0;
+                    if (pos == end) return TAG_ol;
                 case 'p':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 't') return Tag_0;
@@ -324,60 +324,60 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                             if (pos == end) return Tag_0;
                             if (!is_prefix_of("roup", pos, end)) return Tag_0;
                             std::advance(pos, 4);
-                            return pos == end ? TAG_optgroup: Tag_0;
+                            if (pos == end) return TAG_optgroup;
                         case 'i':
                             if (pos == end) return Tag_0;
                             if (!is_prefix_of("on", pos, end)) return Tag_0;
                             std::advance(pos, 2);
-                            return pos == end ? TAG_option: Tag_0;
+                            if (pos == end) return TAG_option;
                     }
                     return Tag_0;
             }
             return Tag_0;
         case 'p':
-            return pos == end ? TAG_p: Tag_0;
+            if (pos == end) return TAG_p;
             switch (*pos++) {
                 case 'a':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ram", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_param: Tag_0;
+                    if (pos == end) return TAG_param;
                 case 'r':
                     if (pos == end) return Tag_0;
                     if (*pos++ != 'e') return Tag_0;
-                    return pos == end ? TAG_pre: Tag_0;
+                    if (pos == end) return TAG_pre;
             }
             return Tag_0;
         case 'q':
-            return pos == end ? TAG_q: Tag_0;
+            if (pos == end) return TAG_q;
         case 's':
-            return pos == end ? TAG_s: Tag_0;
+            if (pos == end) return TAG_s;
             switch (*pos++) {
                 case 'a':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("mp", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_samp: Tag_0;
+                    if (pos == end) return TAG_samp;
                 case 'c':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ript", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_script: Tag_0;
+                    if (pos == end) return TAG_script;
                 case 'e':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("lect", pos, end)) return Tag_0;
                     std::advance(pos, 4);
-                    return pos == end ? TAG_select: Tag_0;
+                    if (pos == end) return TAG_select;
                 case 'm':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("all", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_small: Tag_0;
+                    if (pos == end) return TAG_small;
                 case 'p':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("an", pos, end)) return Tag_0;
                     std::advance(pos, 2);
-                    return pos == end ? TAG_span: Tag_0;
+                    if (pos == end) return TAG_span;
                 case 't':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
@@ -388,28 +388,28 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                                     if (pos == end) return Tag_0;
                                     if (!is_prefix_of("ke", pos, end)) return Tag_0;
                                     std::advance(pos, 2);
-                                    return pos == end ? TAG_strike: Tag_0;
+                                    if (pos == end) return TAG_strike;
                                 case 'o':
                                     if (pos == end) return Tag_0;
                                     if (!is_prefix_of("ng", pos, end)) return Tag_0;
                                     std::advance(pos, 2);
-                                    return pos == end ? TAG_strong: Tag_0;
+                                    if (pos == end) return TAG_strong;
                             }
                             return Tag_0;
                         case 'y':
                             if (pos == end) return Tag_0;
                             if (!is_prefix_of("le", pos, end)) return Tag_0;
                             std::advance(pos, 2);
-                            return pos == end ? TAG_style: Tag_0;
+                            if (pos == end) return TAG_style;
                     }
                     return Tag_0;
                 case 'u':
                     if (pos == end) return Tag_0;
                     switch (*pos++) {
                         case 'b':
-                            return pos == end ? TAG_sub: Tag_0;
+                            if (pos == end) return TAG_sub;
                         case 'p':
-                            return pos == end ? TAG_sup: Tag_0;
+                            if (pos == end) return TAG_sup;
                     }
                     return Tag_0;
             }
@@ -421,53 +421,53 @@ Tag ascii_to_Tag(InputIterator pos, InputIterator end)
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ble", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_table: Tag_0;
+                    if (pos == end) return TAG_table;
                 case 'b':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("ody", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_tbody: Tag_0;
+                    if (pos == end) return TAG_tbody;
                 case 'd':
-                    return pos == end ? TAG_td: Tag_0;
+                    if (pos == end) return TAG_td;
                 case 'e':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("xtarea", pos, end)) return Tag_0;
                     std::advance(pos, 6);
-                    return pos == end ? TAG_textarea: Tag_0;
+                    if (pos == end) return TAG_textarea;
                 case 'f':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("oot", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_tfoot: Tag_0;
+                    if (pos == end) return TAG_tfoot;
                 case 'h':
-                    return pos == end ? TAG_th: Tag_0;
+                    if (pos == end) return TAG_th;
                     if (!is_prefix_of("ead", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_thead: Tag_0;
+                    if (pos == end) return TAG_thead;
                 case 'i':
                     if (pos == end) return Tag_0;
                     if (!is_prefix_of("tle", pos, end)) return Tag_0;
                     std::advance(pos, 3);
-                    return pos == end ? TAG_title: Tag_0;
+                    if (pos == end) return TAG_title;
                 case 'r':
-                    return pos == end ? TAG_tr: Tag_0;
+                    if (pos == end) return TAG_tr;
                 case 't':
-                    return pos == end ? TAG_tt: Tag_0;
+                    if (pos == end) return TAG_tt;
             }
             return Tag_0;
         case 'u':
-            return pos == end ? TAG_u: Tag_0;
+            if (pos == end) return TAG_u;
             if (*pos++ != 'l') return Tag_0;
-            return pos == end ? TAG_ul: Tag_0;
+            if (pos == end) return TAG_ul;
         case 'v':
             if (pos == end) return Tag_0;
             if (!is_prefix_of("ar", pos, end)) return Tag_0;
             std::advance(pos, 2);
-            return pos == end ? TAG_var: Tag_0;
+            if (pos == end) return TAG_var;
     }
     return Tag_0;
 }
-    
+
 Tag ascii_to_Tag(const char *pos, size_t length)
 {
     return ascii_to_Tag(pos, pos + length);

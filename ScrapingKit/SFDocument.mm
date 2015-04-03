@@ -52,7 +52,7 @@ static std::unordered_set<NSString*> kVoidElements =
 };
 */
 
-inline sf::Tag toTag(NSString *o) {
+static sf::Tag toTag(NSString *o) {
     return sf::ascii_to_Tag(o.UTF8String, o.length);
 }
 
@@ -189,15 +189,14 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
                 auto node = [SFElement.alloc initWithName:stringify(pair).lowercaseString attrs:map];
                 closeOptionalTags(node.name, stack);
                 [stack.back() append:node];
-                if (isVoidElement(node.name)) {
-                    break;
-                }
                 switch (parser.leave_elem()) {
                 case sf::ELEM_ERROR:
                 case sf::ELEM_CLOSE:
                     break;
                 default:
-                    stack.push_back(node);
+                    if (!isVoidElement(node.name)) {
+                        stack.push_back(node);
+                    }
                 }
             }
             break;
