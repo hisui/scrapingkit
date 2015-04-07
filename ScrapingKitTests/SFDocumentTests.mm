@@ -11,7 +11,7 @@
 
 - (void)testSimple
 {
-    auto root = [SFDocument documentWithHTML:@"<html>&nbsp;</html>"];
+    auto root = [SFDocument documentWithHTML:@"<html>&nbsp;<br></html>"];
     auto html = root.firstElement;
     XCTAssertEqualObjects(@"html", html.name);
 

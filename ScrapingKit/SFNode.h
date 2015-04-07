@@ -2,6 +2,14 @@
 
 #import <Foundation/Foundation.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern NSString *stringRepeatedAt(NSString *part, int count);
+#ifdef __cplusplus
+}
+#endif
+
 // defined in SFElement.h
 @class SFElement;
 
@@ -33,5 +41,7 @@
  * Gets text data in XML document which this node represents.
  */
 - (NSString*)stringify;
+
+- (void)print:(int)indent;
 
 @end

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		240004511ACE5D43006B1FB4 /* tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 240004501ACE5D43006B1FB4 /* tags.cpp */; };
+		240004531ACE66C4006B1FB4 /* tags.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 240004501ACE5D43006B1FB4 /* tags.cpp */; };
 		2442498F19BD948600F66AAB /* libScrapingKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B2E1754975F00B946AD /* libScrapingKit.a */; };
 		245B0B321754975F00B946AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B311754975F00B946AD /* Foundation.framework */; };
 		245B0B441754975F00B946AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 245B0B311754975F00B946AD /* Foundation.framework */; };
@@ -16,7 +18,7 @@
 		245B0B731754CFC400B946AD /* SFCSSQuery.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B5F1754CFC400B946AD /* SFCSSQuery.mm */; };
 		245B0B751754CFC400B946AD /* SFCSSSelectorParser.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B621754CFC400B946AD /* SFCSSSelectorParser.mm */; };
 		245B0B771754CFC400B946AD /* SFDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B641754CFC400B946AD /* SFDocument.mm */; };
-		245B0B791754CFC400B946AD /* SFElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B671754CFC400B946AD /* SFElement.m */; };
+		245B0B791754CFC400B946AD /* SFElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B671754CFC400B946AD /* SFElement.mm */; };
 		245B0B7B1754CFC400B946AD /* SFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B691754CFC400B946AD /* SFNode.m */; };
 		245B0B7D1754CFC400B946AD /* SFRegExpScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6C1754CFC400B946AD /* SFRegExpScanner.m */; };
 		245B0B7F1754CFC400B946AD /* SFText.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6E1754CFC400B946AD /* SFText.m */; };
@@ -26,7 +28,7 @@
 		245B0C1A175AFC5700B946AD /* SFNodeSelection.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0C19175AFC5700B946AD /* SFNodeSelection.m */; };
 		245C2BC91AB870B300EF9D31 /* SFRegExpScanner.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6C1754CFC400B946AD /* SFRegExpScanner.m */; };
 		245C2BCA1AB870B800EF9D31 /* SFDocument.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B641754CFC400B946AD /* SFDocument.mm */; };
-		245C2BCB1AB870BB00EF9D31 /* SFElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B671754CFC400B946AD /* SFElement.m */; };
+		245C2BCB1AB870BB00EF9D31 /* SFElement.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B671754CFC400B946AD /* SFElement.mm */; };
 		245C2BCC1AB870BD00EF9D31 /* SFNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B691754CFC400B946AD /* SFNode.m */; };
 		245C2BCD1AB870C100EF9D31 /* SFText.m in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B6E1754CFC400B946AD /* SFText.m */; };
 		245C2BCE1AB870C400EF9D31 /* SFCSSFilter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 245B0B5D1754CFC400B946AD /* SFCSSFilter.mm */; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		240004501ACE5D43006B1FB4 /* tags.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tags.cpp; sourceTree = "<group>"; };
+		240004521ACE6063006B1FB4 /* tags.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = tags.hpp; sourceTree = "<group>"; };
 		245B0B2E1754975F00B946AD /* libScrapingKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libScrapingKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		245B0B311754975F00B946AD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		245B0B351754975F00B946AD /* ScrapingKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScrapingKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		245B0B641754CFC400B946AD /* SFDocument.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFDocument.mm; sourceTree = "<group>"; };
 		245B0B651754CFC400B946AD /* SFDocument+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFDocument+Local.h"; sourceTree = "<group>"; };
 		245B0B661754CFC400B946AD /* SFElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFElement.h; sourceTree = "<group>"; };
-		245B0B671754CFC400B946AD /* SFElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFElement.m; sourceTree = "<group>"; };
+		245B0B671754CFC400B946AD /* SFElement.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFElement.mm; sourceTree = "<group>"; };
 		245B0B681754CFC400B946AD /* SFNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFNode.h; sourceTree = "<group>"; };
 		245B0B691754CFC400B946AD /* SFNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFNode.m; sourceTree = "<group>"; };
 		245B0B6A1754CFC400B946AD /* SFNode+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNode+Local.h"; sourceTree = "<group>"; };
@@ -103,7 +107,7 @@
 		245B0C20175B3BC800B946AD /* SFNodeList+Local.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Local.h"; sourceTree = "<group>"; };
 		245C26D51AB7CE0300C16EE6 /* libScrapingKit.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libScrapingKit.a; path = "../../Library/Developer/Xcode/DerivedData/ScrapingKit-aybpcxevldxwxvfneseyctevkovf/Build/Products/Debug-iphonesimulator/libScrapingKit.a"; sourceTree = "<group>"; };
 		2465853C19CDAD7F0014C19A /* SFDocumentTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SFDocumentTests.mm; sourceTree = "<group>"; };
-		24E8B58E190D82B700191BC0 /* codes.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = codes.hpp; sourceTree = "<group>"; };
+		24E8B58E190D82B700191BC0 /* entities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = entities.cpp; sourceTree = "<group>"; };
 		24EF1F5A175B431000EA64B1 /* SFNodeList+Dot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SFNodeList+Dot.h"; sourceTree = "<group>"; };
 		24EF1F5B175B431000EA64B1 /* SFNodeList+Dot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SFNodeList+Dot.m"; sourceTree = "<group>"; };
 		24EF1F5E175C25A800EA64B1 /* SFScrapingKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFScrapingKit.h; sourceTree = "<group>"; };
@@ -207,7 +211,9 @@
 			children = (
 				245B0B831754D04500B946AD /* htmlparse.hpp */,
 				245B0C001756306900B946AD /* entities.hpp */,
-				24E8B58E190D82B700191BC0 /* codes.hpp */,
+				24E8B58E190D82B700191BC0 /* entities.cpp */,
+				240004501ACE5D43006B1FB4 /* tags.cpp */,
+				240004521ACE6063006B1FB4 /* tags.hpp */,
 			);
 			name = HTML;
 			sourceTree = "<group>";
@@ -244,7 +250,7 @@
 				245B0B641754CFC400B946AD /* SFDocument.mm */,
 				245B0B651754CFC400B946AD /* SFDocument+Local.h */,
 				245B0B661754CFC400B946AD /* SFElement.h */,
-				245B0B671754CFC400B946AD /* SFElement.m */,
+				245B0B671754CFC400B946AD /* SFElement.mm */,
 				245B0B681754CFC400B946AD /* SFNode.h */,
 				245B0B691754CFC400B946AD /* SFNode.m */,
 				245B0B6A1754CFC400B946AD /* SFNode+Local.h */,
@@ -372,10 +378,11 @@
 				245B0B731754CFC400B946AD /* SFCSSQuery.mm in Sources */,
 				245B0B751754CFC400B946AD /* SFCSSSelectorParser.mm in Sources */,
 				245B0B771754CFC400B946AD /* SFDocument.mm in Sources */,
-				245B0B791754CFC400B946AD /* SFElement.m in Sources */,
+				245B0B791754CFC400B946AD /* SFElement.mm in Sources */,
 				245B0B7B1754CFC400B946AD /* SFNode.m in Sources */,
 				245B0B7D1754CFC400B946AD /* SFRegExpScanner.m in Sources */,
 				245B0B7F1754CFC400B946AD /* SFText.m in Sources */,
+				240004511ACE5D43006B1FB4 /* tags.cpp in Sources */,
 				245B0C03175A2A8500B946AD /* SFNodeList.mm in Sources */,
 				245B0C1A175AFC5700B946AD /* SFNodeSelection.m in Sources */,
 				24EF1F5C175B431000EA64B1 /* SFNodeList+Dot.m in Sources */,
@@ -394,11 +401,12 @@
 				245C2BCA1AB870B800EF9D31 /* SFDocument.mm in Sources */,
 				245C2BD21AB870D100EF9D31 /* SFNodeList+Dot.m in Sources */,
 				245C2BCF1AB870C600EF9D31 /* SFCSSQuery.mm in Sources */,
+				240004531ACE66C4006B1FB4 /* tags.cpp in Sources */,
 				245C2BCC1AB870BD00EF9D31 /* SFNode.m in Sources */,
 				245C2BD31AB870D400EF9D31 /* SFNodeSelection.m in Sources */,
 				245B0C07175A578A00B946AD /* SFCSSSelectorParserTests.m in Sources */,
 				245B0C0E175AD24700B946AD /* SFCSSQueryTests.mm in Sources */,
-				245C2BCB1AB870BB00EF9D31 /* SFElement.m in Sources */,
+				245C2BCB1AB870BB00EF9D31 /* SFElement.mm in Sources */,
 				2465853D19CDAD7F0014C19A /* SFDocumentTests.mm in Sources */,
 				245C2BC91AB870B300EF9D31 /* SFRegExpScanner.m in Sources */,
 			);

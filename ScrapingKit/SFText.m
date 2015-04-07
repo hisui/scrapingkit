@@ -56,7 +56,10 @@ NSString *SFTextDecode(NSString *src)
     return self;
 }
 
-- (NSString*)stringify { return SFTextEncode(_text); }
+- (NSString*)stringify
+{
+    return SFTextEncode(_text);
+}
 
 - (BOOL)isBlank
 {
@@ -70,6 +73,11 @@ NSString *SFTextDecode(NSString *src)
         }
     }
     return YES;
+}
+
+- (void)print:(int)indent
+{
+    NSLog(@"[html] %@text {%@}", stringRepeatedAt(@"  ", indent), _text);
 }
 
 @end

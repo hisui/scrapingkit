@@ -3,6 +3,15 @@
 #import "SFNode.h"
 #import "SFNode+Local.h"
 
+NSString *stringRepeatedAt(NSString *part, int count)
+{
+    NSMutableString *dest = NSMutableString.string;
+    for (int i = 0; i < count; ++i) {
+        [dest appendString:part];
+    }
+    return dest;
+}
+
 @implementation SFNode
 
 // readonly property
@@ -27,6 +36,11 @@
 {
     [self doesNotRecognizeSelector:_cmd];
     return nil;
+}
+
+- (void)print:(int)indent
+{
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 @end

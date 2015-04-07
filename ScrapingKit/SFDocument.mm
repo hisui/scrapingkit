@@ -4,7 +4,6 @@
 #import "SFElement.h"
 #include <deque>
 #include <vector>
-#include <unordered_set>
 #include "htmlparse.hpp"
 #include "entities.hpp"
 #include "tags.hpp"
@@ -12,45 +11,6 @@
 typedef sf::basic_htmlparser<const char*> HTMLParser;
 
 using std::get;
-
-namespace std {
-    template<> struct equal_to<NSString*>
-    {
-        bool operator()(NSString *lhs, NSString *rhs) const
-        {
-            return [lhs isEqual:rhs];
-        }
-    };
-    
-    template<> struct hash<NSString*>
-    {
-        size_t operator()(NSString *o) const
-        {
-            return size_t(o.hash);
-        }
-    };
-}
-
-/*
-static std::unordered_set<NSString*> kVoidElements =
-{
-      @"area"
-    , @"base"
-    , @"br"
-    , @"col"
-    , @"embed"
-    , @"hr"
-    , @"img"
-    , @"input"
-    , @"keygen"
-    , @"link"
-    , @"meta"
-    , @"param"
-    , @"source"
-    , @"track"
-    , @"wbr"
-};
-*/
 
 static sf::Tag toTag(NSString *o) {
     return sf::ascii_to_Tag(o.UTF8String, o.length);
@@ -83,16 +43,6 @@ static void closeElement(NSString *name, std::deque<SFElement*> &stack)
     for (int i = int(stack.size()) - 1; i >= 0; --i) {
         auto elem = stack[i];
         if ([elem.name isEqual:name]) {
-            /*
-            for (int j = i + 1; j < stack.size(); ++j) {
-                auto e = stack[j];
-                for (auto next = e.first; next; ) {
-                    auto node = next;
-                    next = next.next;
-                    [elem insert:node before:nil];
-                }
-            }
-            */
             stack.erase(stack.begin() + i, stack.end());
             break;
         }
@@ -205,15 +155,6 @@ static void parseHTML(SFElement *root, const char *pos, const char *end)
             break;
         }
     }
-    /*
-    for (int i = 1; i < stack.size(); ++i) {
-        for (auto next = stack[i].first; next; ) {
-            auto node = next;
-            next = next.next;
-            [root insert:node before:nil];
-        }
-    }
-    */
 }
 
 @implementation SFDocument

@@ -92,7 +92,7 @@ public:
             {
                 NSMutableArray *a = refs[head->idref];
                 if (!a) {
-                    a = refs[head->idref] = [NSMutableArray array];
+                    a = refs[head->idref] = NSMutableArray.array;
                     for (SFElement *e in elements) {
                         if ([e get:head->idref]) [a addObject:e];
                     }
@@ -219,15 +219,16 @@ private:
                                   objects:(__unsafe_unretained id*)stackbuf
                                     count:(NSUInteger)len
 {
-	NSUInteger count = 0;
 	if (state->state++ == 0) {
 		state->mutationsPtr = &state->extra[0];
-	}
+    }
+    NSUInteger count = 0;
+    assert(len > 0);
     if (auto e = _processor->next()) {
         state->itemsPtr = stackbuf;
-		while (e && count+1 < len) {
-			stackbuf[count++] = e, e = _processor->next();
-		}
+        do {
+            stackbuf[count ++] = e;
+        } while (count < len && (e = _processor->next()));
     }
 	return count;
 }

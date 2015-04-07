@@ -106,8 +106,8 @@ static BOOL isText(SFNode *node)
     }
     if (_size) {
         [buf appendString:@">"];
-        for (SFNode *cur = _first; cur != _guard; cur = cur->_next) {
-            [buf appendString:[cur stringify]];
+        for (auto cur = _first; cur != _guard; cur = cur->_next) {
+            [buf appendString:cur.stringify];
         }
         [buf appendFormat:@"</%@>", _name];
     }
@@ -115,6 +115,17 @@ static BOOL isText(SFNode *node)
         [buf appendString:@"/>"];
     }
     return buf;
+}
+
+
+- (void)print:(int)indent
+{
+    NSString *pad = stringRepeatedAt(@"  ", indent);
+    NSLog(@"[html] %@%@ {", pad, _name);
+    for (auto cur = _first; cur != _guard; cur = cur->_next) {
+        [cur print:indent + 1];
+    }
+    NSLog(@"[html] %@} // %@", pad, _name);
 }
 
 // readonly property
@@ -142,7 +153,7 @@ static BOOL isText(SFNode *node)
 // readonly property
 - (SFElement*)firstElement
 {
-    for (SFNode *cur = _first; cur != _guard; cur = cur->_next) {
+    for (auto cur = _first; cur != _guard; cur = cur->_next) {
         if (!isText(cur)) {
             return (SFElement*) cur;
         }
@@ -286,7 +297,7 @@ static BOOL isText(SFNode *node)
         node->_prev = nil;
         node->_next = nil;
         if (!isText(node)) {
-            SFElement *elem = (SFElement*) node;
+            auto elem = (SFElement*) node;
             elem->_prevElem = nil;
             elem->_nextElem = nil;
         }
